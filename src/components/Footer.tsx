@@ -4,9 +4,9 @@ import { DiamondIcon } from "./Icons";
 
 export function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200 pt-16 pb-12 relative overflow-hidden text-gray-900">
+    <footer className="bg-white dark:bg-[#0A0A0B] border-t border-gray-200 dark:border-gray-800 pt-16 pb-12 relative overflow-hidden text-gray-900 dark:text-gray-100">
       <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-gray-200">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 pb-12 border-b border-gray-200 dark:border-gray-800">
           {/* Brand Column */}
           <div className="col-span-2 space-y-4">
             <Link href="/" prefetch={true} className="flex items-center space-x-3 cursor-pointer">
@@ -15,7 +15,7 @@ export function Footer() {
                   <DiamondIcon size={18} />
                 </div>
               </div>
-              <span className="text-lg font-black text-gray-900 tracking-tight">NovaServe</span>
+              <span className="text-lg font-black text-gray-900 dark:text-gray-100 tracking-tight">NovaServe</span>
             </Link>
             <p className="text-sm text-gray-600 font-semibold leading-relaxed max-w-sm">
               The modern open-source framework for building, deploying, and scaling cloud applications.
@@ -33,7 +33,6 @@ export function Footer() {
                 >
                   <Github className="w-4 h-4 text-gray-900" />
                   <span>novaserve-cloud/novaserve</span>
-                  <span className="bg-white text-black px-1.5 py-0.5 rounded-md text-[10px] border border-gray-200">14.2K</span>
                 </a>
                 <a
                   href="https://twitter.com/novaserve"
@@ -92,19 +91,19 @@ export function Footer() {
               <li><Link href="/changelog" prefetch={true} className="hover:text-[#FFB020] transition-colors cursor-pointer">Changelog</Link></li>
               <li><Link href="/community" prefetch={true} className="hover:text-[#FFB020] transition-colors cursor-pointer">Community</Link></li>
               <li><Link href="/security" prefetch={true} className="hover:text-[#FFB020] transition-colors cursor-pointer">Security & SOC2</Link></li>
-              <li><Link href="/sitemap" prefetch={true} className="hover:text-[#FFB020] transition-colors cursor-pointer font-bold">Visual Sitemap</Link></li>
+              <li><Link href="/visual-sitemap" prefetch={true} className="hover:text-[#FFB020] transition-colors cursor-pointer font-bold">Visual Sitemap</Link></li>
             </ul>
           </div>
         </div>
 
         {/* Bottom copyright & operational status */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600 font-semibold">
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600 dark:text-gray-400 font-semibold">
           <div className="flex items-center space-x-3">
             <span>© {new Date().getFullYear()} NovaServe Open Source. All rights reserved.</span>
             <span>•</span>
-            <Link href="/security" prefetch={true} className="hover:text-[#FFB020] cursor-pointer">Privacy Policy</Link>
+            <Link href="/privacy" prefetch={true} className="hover:text-[#FFB020] cursor-pointer">Privacy Policy</Link>
             <span>•</span>
-            <Link href="/security" prefetch={true} className="hover:text-[#FFB020] cursor-pointer">Terms of Service</Link>
+            <Link href="/terms" prefetch={true} className="hover:text-[#FFB020] cursor-pointer">Terms of Service</Link>
           </div>
 
           <div className="flex items-center space-x-3">

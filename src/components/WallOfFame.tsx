@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Trophy,
   Star,
@@ -35,6 +36,7 @@ interface Contributor {
   category: "maintainer" | "code" | "docs" | "providers";
   avatarBg: string;
   avatarText: string;
+  avatarImg?: string;
   badge: string;
   bio: string;
   topContribution: string;
@@ -82,6 +84,7 @@ export function WallOfFame() {
       category: "maintainer",
       avatarBg: "bg-amber-500",
       avatarText: "SA",
+      avatarImg: "/images/shadab.jpeg",
       badge: "👑 Creator",
       bio: "Creator of NovaServe. Lead architect behind the TypeScript AST multi-cloud compiler engine, zero-drift state machine, and core NPM package.",
       topContribution: "NovaServe Core AST Compiler & Provider Matrix Engine",
@@ -98,6 +101,7 @@ export function WallOfFame() {
       category: "maintainer",
       avatarBg: "bg-indigo-600",
       avatarText: "MS",
+      avatarImg: "/images/mustakim.jpeg",
       badge: "⚡ Co-Maintainer",
       bio: "Co-maintainer of NovaServe Cloud. Spearheading infrastructure deployment engines, cloud architecture docs, and multi-provider bindings.",
       topContribution: "Infrastructure Deployment Pipeline & Cloud Architecture Docs",
@@ -232,8 +236,12 @@ export function WallOfFame() {
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className={`w-16 h-16 rounded-2xl ${m.avatarBg} text-white font-black text-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform`}>
-                      {m.avatarText}
+                    <div className={`w-24 h-24 rounded-3xl ${m.avatarBg} text-white font-black text-4xl flex items-center justify-center shadow-md group-hover:scale-105 transition-transform overflow-hidden`}>
+                      {m.avatarImg ? (
+                        <Image src={m.avatarImg} alt={m.name} width={96} height={96} className="w-full h-full object-cover" />
+                      ) : (
+                        m.avatarText
+                      )}
                     </div>
                     <span className="px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-mono font-extrabold">
                       {m.badge}
@@ -572,9 +580,13 @@ export function WallOfFame() {
               ✕
             </button>
 
-            <div className="flex items-center space-x-4">
-              <div className={`w-16 h-16 rounded-2xl ${activeModalContributor.avatarBg} text-white font-black text-2xl flex items-center justify-center shadow-lg`}>
-                {activeModalContributor.avatarText}
+            <div className="flex items-center space-x-6">
+              <div className={`w-28 h-28 rounded-3xl ${activeModalContributor.avatarBg} text-white font-black text-5xl flex items-center justify-center shadow-lg overflow-hidden`}>
+                {activeModalContributor.avatarImg ? (
+                  <Image src={activeModalContributor.avatarImg} alt={activeModalContributor.name} width={112} height={112} className="w-full h-full object-cover" />
+                ) : (
+                  activeModalContributor.avatarText
+                )}
               </div>
               <div>
                 <h3 className="text-2xl font-black text-gray-900">{activeModalContributor.name}</h3>

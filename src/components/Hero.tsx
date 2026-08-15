@@ -12,17 +12,15 @@ export function Hero() {
           {/* Left Column: Pulumi-style Headline & Value Prop */}
           <div className="lg:col-span-7 space-y-6 text-left">
             {/* Badges */}
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-mono font-extrabold">
-                OPEN SOURCE
+            <Link href="/docs" className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-indigo-200 bg-white hover:bg-indigo-50/50 transition-colors cursor-pointer group mb-2">
+              <span className="text-[11px] sm:text-xs font-mono font-bold text-indigo-600 tracking-wider">
+                OPEN SOURCE:
               </span>
-              <span className="px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-900 text-xs font-mono font-extrabold">
-                TYPESCRIPT NATIVE
+              <span className="text-[11px] sm:text-xs font-mono font-semibold text-gray-600 tracking-wider">
+                TYPESCRIPT NATIVE SERVERLESS FRAMEWORK
               </span>
-              <span className="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-mono font-extrabold">
-                SERVERLESS FRAMEWORK
-              </span>
-            </div>
+              <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-indigo-600 transition-colors" />
+            </Link>
 
             {/* Main Hero Tagline & Headline */}
             <div className="space-y-4">

@@ -53,7 +53,7 @@ export function Navbar() {
     <div className="fixed top-0 left-0 right-0 z-50">
       {/* Pulumi-style Top Announcement Banner Bar */}
       {bannerVisible && (
-        <div className="bg-[#100D23] text-white text-xs font-mono py-2 px-4 flex items-center justify-between border-b border-[#252044]">
+        <div className="bg-[#100D23] text-white text-xs font-mono py-2 px-4 flex items-center justify-between border-b border-[#252044] dark:border-gray-800">
           <div className="max-w-7xl mx-auto flex items-center justify-center space-x-2 text-center w-full">
             <span className="text-[#FFB020]">✦</span>
             <span className="font-medium text-gray-200">
@@ -81,8 +81,8 @@ export function Navbar() {
       <header
         className={`transition-all duration-300 ${
           scrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm py-3"
-            : "bg-white border-b border-gray-100 py-3.5"
+            ? "bg-white/95 dark:bg-[#0A0A0B]/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm py-3"
+            : "bg-white dark:bg-[#0A0A0B] border-b border-gray-100 dark:border-gray-800 py-3.5"
         }`}
       >
         <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12">
@@ -93,13 +93,13 @@ export function Navbar() {
                 <div className="w-8 h-8 rounded-xl bg-[#FFB020] p-0.5 shadow-md group-hover:shadow-[#FFB020]/50 transition-all duration-300 flex items-center justify-center text-black">
                   <DiamondIcon size={20} />
                 </div>
-                <span className="text-xl font-black text-gray-900 tracking-tight">
+                <span className="text-xl font-black text-gray-900 dark:text-gray-100 tracking-tight">
                   NovaServe
                 </span>
               </Link>
 
               {/* Desktop Navigation Links */}
-              <nav className="hidden lg:flex items-center space-x-1 font-sans text-sm font-semibold text-gray-700">
+              <nav className="hidden lg:flex items-center space-x-1 font-sans text-sm font-semibold text-gray-700 dark:text-gray-300">
                 {/* Product Megamenu */}
                 <div
                   className="relative"
@@ -112,7 +112,7 @@ export function Navbar() {
                   </button>
 
                   {productMenuOpen && (
-                    <div className="absolute top-full left-0 w-[520px] mt-1 bg-white border border-gray-200 rounded-2xl shadow-2xl p-4 grid grid-cols-2 gap-3 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
+                    <div className="absolute top-full left-0 w-[520px] mt-1 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl p-4 grid grid-cols-2 gap-3 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
                       {productMenuItems.map((item, idx) => (
                         <Link
                           key={idx}
@@ -212,7 +212,7 @@ export function Navbar() {
 
         {/* Mobile Drawer */}
         {mobileMenuOpen && (
-          <div className="sm:hidden bg-white border-b border-gray-200 px-4 py-6 space-y-4 animate-in slide-in-from-top duration-200">
+          <div className="sm:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-4 py-6 space-y-4 animate-in slide-in-from-top duration-200">
             <div className="grid grid-cols-2 gap-2">
               {navLinks.map((link) => (
                 <Link

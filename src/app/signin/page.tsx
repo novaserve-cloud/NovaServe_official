@@ -14,7 +14,8 @@ import {
   Terminal,
   Package,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  Github
 } from "lucide-react";
 import { DiamondIcon } from "@/components/Icons";
 
@@ -23,12 +24,21 @@ export default function SignInPage() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (!email) return;
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      setSubmitted(true);
+    }, 1000);
+  };
+
+  const handleGithubSubmit = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setEmail("github-user@example.com"); // Mocked email for github user
       setSubmitted(true);
     }, 1000);
   };
@@ -118,6 +128,28 @@ export default function SignInPage() {
                   <div className="w-full border-t border-gray-200" />
                 </div>
                 <div className="relative flex justify-center text-[10px] font-mono uppercase">
+                  <span className="bg-gray-50 px-2 text-gray-500 font-bold">Or continue with GitHub</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                disabled={loading}
+                onClick={() => {
+                  if (!email) setEmail("github-user"); // To bypass empty check if they just click github
+                  handleGithubSubmit();
+                }}
+                className="w-full py-3.5 rounded-xl bg-[#24292F] hover:bg-[#000000] text-white font-extrabold text-sm shadow-md hover:shadow-lg transition-all transform active:scale-95 flex items-center justify-center space-x-2 cursor-pointer disabled:opacity-50"
+              >
+                <Github className="w-4 h-4" />
+                <span>Continue with GitHub</span>
+              </button>
+
+              <div className="relative py-2 pt-4">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-200" />
+                </div>
+                <div className="relative flex justify-center text-[10px] font-mono uppercase">
                   <span className="bg-gray-50 px-2 text-gray-500 font-bold">Or use open-source CLI today</span>
                 </div>
               </div>
@@ -131,7 +163,7 @@ export default function SignInPage() {
                   </span>
                   <span className="text-emerald-400 font-bold">v2.1.6</span>
                 </div>
-                <code className="block text-[#FFB020] text-xs">npm install -g novaserve</code>
+                <code className="block text-[#FFB020] text-xs font-bold">npm install -g novaserve</code>
               </div>
             </form>
           )}
