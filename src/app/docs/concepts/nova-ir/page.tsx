@@ -28,7 +28,7 @@ export default function NovaIRPage() {
   "version": "1.0.0",
   "meta": {
     "appName": "ecommerce-backend",
-    "compilerVersion": "2.1.6",
+    "compilerVersion": "2.1.10",
     "timestamp": "2026-08-15T21:16:00.000Z",
     "stateHash": "e3b0c44298fc1c149afbf4c8996fb924..."
   },

@@ -161,7 +161,7 @@ export default function SignInPage() {
                     <Terminal className="w-3.5 h-3.5 text-[#FFB020]" />
                     <span>Run Open Source CLI Locally</span>
                   </span>
-                  <span className="text-emerald-400 font-bold">v2.1.6</span>
+                  <span className="text-emerald-400 font-bold">v2.1.10</span>
                 </div>
                 <code className="block text-[#FFB020] text-xs font-bold">npm install -g novaserve</code>
               </div>

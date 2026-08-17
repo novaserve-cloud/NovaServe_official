@@ -101,7 +101,6 @@ export function WallOfFame() {
       category: "maintainer",
       avatarBg: "bg-indigo-600",
       avatarText: "MS",
-      avatarImg: "/images/mustakim.jpeg",
       badge: "⚡ Co-Maintainer",
       bio: "Co-maintainer of NovaServe Cloud. Spearheading infrastructure deployment engines, cloud architecture docs, and multi-provider bindings.",
       topContribution: "Infrastructure Deployment Pipeline & Cloud Architecture Docs",

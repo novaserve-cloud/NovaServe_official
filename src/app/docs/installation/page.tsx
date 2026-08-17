@@ -46,7 +46,7 @@ export default function InstallationPage() {
         <p>After installing, verify the CLI is available:</p>
         <CodeBlock
           code={`nova --version
-# novaserve v2.1.6`}
+# novaserve v2.1.10`}
           language="bash"
           filename="Terminal"
         />

@@ -27,7 +27,7 @@
 - **Md Shadab Azam Ansari** (*Author & Lead Compiler Architect*)
   - 📧 Email: `md.shadab.azam.ansari@gmail.com`
   - 🌐 Portfolio: [md-shadab-azam-ansari.vercel.app](https://md-shadab-azam-ansari.vercel.app/)
-  - 📦 NPM: [`novaserve@2.1.6`](https://www.npmjs.com/package/novaserve)
+  - 📦 NPM: [`novaserve@2.1.10`](https://www.npmjs.com/package/novaserve)
   - 🐙 GitHub: [`novaserve-cloud/novaserve`](https://github.com/novaserve-cloud/novaserve)
 
 - **Mustakim Shaikh** (*Co-Maintainer & Open Source Core Contributor*)

@@ -57,7 +57,7 @@ export function Navbar() {
           <div className="max-w-7xl mx-auto flex items-center justify-center space-x-2 text-center w-full">
             <span className="text-[#FFB020]">✦</span>
             <span className="font-medium text-gray-200">
-              Latest release (v2.1.6): Nova IR 1.0.0, automated zero-trust IAM synthesis, and local Hono emulator support.
+              Latest release (v2.1.10): Core Package Updates, Performance Improvements & Bug Fixes.
             </span>
             <Link
               href="/changelog"
@@ -167,7 +167,7 @@ export function Navbar() {
                 className="flex items-center space-x-1.5 text-xs font-mono text-gray-700 hover:text-amber-600 transition-colors cursor-pointer"
               >
                 <Github className="w-4 h-4 text-gray-900" />
-                <span className="font-bold">v2.1.6</span>
+                <span className="font-bold">v2.1.10</span>
               </a>
 
               {/* Contact Us */}

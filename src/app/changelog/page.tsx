@@ -3,6 +3,16 @@ import { FileText, GitCommit, CheckCircle2, Zap } from "lucide-react";
 export default function ChangelogPage() {
   const releases = [
     {
+      version: "v2.1.10",
+      date: "August 18, 2026",
+      title: "Core Package Updates",
+      features: [
+        "Published official open-source package novaserve@2.1.10 to NPM registry"
+      ],
+      diff: `+ import { defineApp, api, storage } from "novaserve";
++ export default defineApp({ name: "my-nova-app", version: "2.1.10" });`,
+    },
+    {
       version: "v2.1.6",
       date: "August 15, 2026",
       title: "Full Production Architecture & Open Source Release",

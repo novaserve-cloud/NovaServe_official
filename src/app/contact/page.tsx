@@ -217,7 +217,7 @@ export default function ContactPage() {
                 <div className="flex items-center space-x-2">
                   <Package className="w-4 h-4 text-[#FFB020] shrink-0" />
                   <a href="https://www.npmjs.com/package/novaserve" target="_blank" rel="noopener noreferrer" className="hover:text-amber-600 font-bold flex items-center gap-1">
-                    <span>NPM: novaserve@2.1.6</span>
+                    <span>NPM: novaserve@2.1.10</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>

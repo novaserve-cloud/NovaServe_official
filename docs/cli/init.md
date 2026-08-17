@@ -43,7 +43,7 @@ nova init my-edge-app --template nextjs-edge
 ✓ Initialized App.ts (Application & Infrastructure definition)
 ✓ Initialized nova.config.ts (Compiler settings)
 ✓ Initialized tsconfig.json (TypeScript configuration)
-✓ Installed novaserve@2.1.6 dependency
+✓ Installed novaserve@2.1.10 dependency
 
 Project successfully initialized!
 Run 'cd my-api && nova dev' to start local emulation.

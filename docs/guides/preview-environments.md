@@ -49,7 +49,7 @@ jobs:
       - name: Install Dependencies & NovaServe CLI
         run: |
           npm ci
-          npm install -g novaserve@2.1.6
+          npm install -g novaserve@2.1.10
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4

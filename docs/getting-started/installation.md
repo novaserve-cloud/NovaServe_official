@@ -31,7 +31,7 @@ nova --version
 
 **Expected Output:**
 ```text
-novaserve v2.1.6 (x86_64-apple-darwin)
+novaserve v2.1.10 (x86_64-apple-darwin)
 ```
 
 ---
@@ -41,7 +41,7 @@ novaserve v2.1.6 (x86_64-apple-darwin)
 If adding NovaServe to an existing TypeScript project, install the runtime library as a project dependency:
 
 ```bash
-npm install novaserve@2.1.6
+npm install novaserve@2.1.10
 ```
 
 ---
@@ -88,7 +88,7 @@ nova doctor
 **Expected Output:**
 ```text
 [✓] Node.js Environment: v20.11.0
-[✓] NovaServe CLI Binary: v2.1.6
+[✓] NovaServe CLI Binary: v2.1.10
 [✓] TypeScript Runtime: v5.7.3
 [✓] AWS Target Credentials: Valid (Account: 123456789012, Region: us-east-1)
 [✓] Cloudflare Target Token: Valid (Account ID: 8f3a...)

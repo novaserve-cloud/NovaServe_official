@@ -1,6 +1,6 @@
 # NovaServe Documentation
 
-Welcome to the official technical documentation for **NovaServe** (`novaserve@2.1.6`), the open-source, TypeScript-native cloud application compiler.
+Welcome to the official technical documentation for **NovaServe** (`novaserve@2.1.10`), the open-source, TypeScript-native cloud application compiler.
 
 NovaServe decouples application definition from raw infrastructure provisioning scripts. By treating infrastructure as a compilation target, NovaServe converts high-level TypeScript code ASTs into deterministic intermediate representations (Nova IR), synthesizes zero-trust least-privilege IAM policies, and deploys serverless resources across cloud providers with zero manual YAML or HCL configuration.
 
@@ -54,7 +54,7 @@ NovaServe decouples application definition from raw infrastructure provisioning 
 
 ## 📦 Official Package Information
 
-- **NPM Package**: [`novaserve@2.1.6`](https://www.npmjs.com/package/novaserve)
+- **NPM Package**: [`novaserve@2.1.10`](https://www.npmjs.com/package/novaserve)
 - **GitHub Repository**: [`novaserve-cloud/novaserve`](https://github.com/novaserve-cloud/novaserve)
 - **License**: Apache-2.0 (Open source and free for individuals)
 - **Official Domain**: [https://novaserve.cloud](https://novaserve.cloud)

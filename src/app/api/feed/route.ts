@@ -16,13 +16,13 @@ export interface NovaFeedItem {
 const novaFeedData: NovaFeedItem[] = [
   {
     id: "nova-v2-1-6-release",
-    title: "NovaServe v2.1.6 Released: Full Production Architecture & NPM Core Package",
+    title: "NovaServe v2.1.10 Released: Full Production Architecture & NPM Core Package",
     link: "/changelog",
     pubDate: "Sat, 15 Aug 2026 12:00:00 GMT",
     creator: "Mustakim Shaikh & Md Shadab Azam Ansari",
-    description: "Official release of novaserve@2.1.6 to NPM registry with deterministic SHA-256 state verification, automated least-privilege IAM policy generation, and local Hono emulator support.",
+    description: "Official release of novaserve@2.1.10 to NPM registry with deterministic SHA-256 state verification, automated least-privilege IAM policy generation, and local Hono emulator support.",
     category: "RELEASE ANNOUNCEMENT",
-    badgeText: "v2.1.6",
+    badgeText: "v2.1.10",
   },
   {
     id: "compiling-infrastructure-ast-vs-hcl",

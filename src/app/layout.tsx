@@ -76,7 +76,7 @@ export default function RootLayout({
         "name": "NovaServe",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Linux, macOS, Windows",
-        "softwareVersion": "2.1.6",
+        "softwareVersion": "2.1.10",
         "license": "https://www.apache.org/licenses/LICENSE-2.0",
         "offers": {
           "@type": "Offer",
