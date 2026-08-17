@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { Rss, ExternalLink, RefreshCw, Clock, User, Tag, Sparkles, Check, Copy, Zap, Layers } from "lucide-react";
 import Link from "next/link";
 
+import { novaFeedData } from "@/lib/feedData";
+
 interface FeedItem {
   id: string;
   title: string;
@@ -26,16 +28,13 @@ export function NovaFeedSection() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/feed");
-      const data = await res.json();
-      if (data.success && Array.isArray(data.items)) {
-        setItems(data.items);
-      } else {
-        throw new Error(data.error || "Could not load feed");
-      }
+      // Simulate network request to keep the UI interaction the same
+      setTimeout(() => {
+        setItems(novaFeedData);
+        setLoading(false);
+      }, 300);
     } catch (err: any) {
       setError(err.message || "Failed to load NovaServe feed");
-    } finally {
       setLoading(false);
     }
   };
@@ -45,7 +44,7 @@ export function NovaFeedSection() {
   }, []);
 
   const handleCopyRssUrl = () => {
-    const rssUrl = `${window.location.origin}/api/feed?format=xml`;
+    const rssUrl = `${window.location.origin}/feed.xml`;
     navigator.clipboard.writeText(rssUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -106,7 +105,7 @@ export function NovaFeedSection() {
           </button>
 
           <a
-            href="/api/feed?format=xml"
+            href="/feed.xml"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2.5 rounded-xl bg-[#FFB020] hover:bg-[#FFC44D] text-black text-xs font-mono font-black flex items-center space-x-2 transition-all cursor-pointer shadow-md"
@@ -155,7 +154,7 @@ export function NovaFeedSection() {
           <div className="font-bold text-red-400">Error loading feed</div>
           <p>{error}</p>
           <a
-            href="/api/feed?format=xml"
+            href="/feed.xml"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-amber-400 underline pt-2"
