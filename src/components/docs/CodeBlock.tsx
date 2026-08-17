@@ -8,46 +8,44 @@ import { Copy, Check, FileCode2 } from "lucide-react";
 /* ------------------------------------------------------------------ */
 
 function highlightCode(code: string, language: string): string {
+  let res = code.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
   if (language === "bash" || language === "shell") {
-    return code
-      .replace(/(#.*)$/gm, '<span class="syn-comment">$1</span>')
-      .replace(/^(\$\s)/gm, '<span class="syn-prompt">$1</span>')
+    res = res
+      .replace(/(#.*)$/gm, '\x01syn-comment\x02$1\x03')
+      .replace(/^(\$\s)/gm, '\x01syn-prompt\x02$1\x03')
+      .replace(/("(?:[^"\\]|\\.)*")/g, '\x01syn-string\x02$1\x03')
       .replace(
         /\b(npm|npx|pnpm|yarn|bun|nova|novaserve|curl|cd|git|clone|install|run|build|dev|deploy|init|compile|plan|drift|destroy|doctor)\b/g,
-        '<span class="syn-keyword">$1</span>'
+        '\x01syn-keyword\x02$1\x03'
       )
-      .replace(/(--?[\w-]+)/g, '<span class="syn-flag">$1</span>')
-      .replace(/("(?:[^"\\]|\\.)*")/g, '<span class="syn-string">$1</span>');
-  }
-
-  if (language === "typescript" || language === "ts" || language === "javascript" || language === "js") {
-    return code
-      .replace(/(\/\/.*)$/gm, '<span class="syn-comment">$1</span>')
+      .replace(/(--?[\w-]+)/g, '\x01syn-flag\x02$1\x03');
+  } else if (language === "typescript" || language === "ts" || language === "javascript" || language === "js") {
+    res = res
+      .replace(/(\/\/.*)$/gm, '\x01syn-comment\x02$1\x03')
+      .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)/g, '\x01syn-string\x02$1\x03')
       .replace(
         /\b(import|export|from|const|let|var|function|async|await|return|if|else|try|catch|throw|new|typeof|for|of|in|class|extends|interface|type)\b/g,
-        '<span class="syn-keyword">$1</span>'
+        '\x01syn-keyword\x02$1\x03'
       )
-      .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)/g, '<span class="syn-string">$1</span>')
-      .replace(/\b(true|false|null|undefined|void)\b/g, '<span class="syn-literal">$1</span>')
-      .replace(/\b(\d+)\b/g, '<span class="syn-number">$1</span>')
-      .replace(/\b(defineApp|defineConfig|api|storage|queue|database)\b/g, '<span class="syn-fn">$1</span>');
+      .replace(/\b(true|false|null|undefined|void)\b/g, '\x01syn-literal\x02$1\x03')
+      .replace(/\b(\d+)\b/g, '\x01syn-number\x02$1\x03')
+      .replace(/\b(defineApp|defineConfig|api|storage|queue|database)\b/g, '\x01syn-fn\x02$1\x03');
+  } else if (language === "json") {
+    res = res
+      .replace(/("(?:[^"\\]|\\.)*")(\s*:)/g, '\x01syn-key\x02$1\x03$2')
+      .replace(/:(\s*)("(?:[^"\\]|\\.)*")/g, ':$1\x01syn-string\x02$2\x03')
+      .replace(/\b(true|false|null)\b/g, '\x01syn-literal\x02$1\x03')
+      .replace(/\b(\d+\.?\d*)\b/g, '\x01syn-number\x02$1\x03');
+  } else if (language === "text" || language === "plaintext") {
+    res = res
+      .replace(/^(\s*[✓✗✕+~\-●▸▹→])/gm, '\x01syn-prompt\x02$1\x03')
+      .replace(/(\[[\w\s]+\])/g, '\x01syn-keyword\x02$1\x03');
   }
 
-  if (language === "json") {
-    return code
-      .replace(/("(?:[^"\\]|\\.)*")(\s*:)/g, '<span class="syn-key">$1</span>$2')
-      .replace(/:(\s*)("(?:[^"\\]|\\.)*")/g, ':$1<span class="syn-string">$2</span>')
-      .replace(/\b(true|false|null)\b/g, '<span class="syn-literal">$1</span>')
-      .replace(/\b(\d+\.?\d*)\b/g, '<span class="syn-number">$1</span>');
-  }
-
-  if (language === "text" || language === "plaintext") {
-    return code
-      .replace(/^(\s*[✓✗✕+~\-●▸▹→])/gm, '<span class="syn-prompt">$1</span>')
-      .replace(/(\[[\w\s]+\])/g, '<span class="syn-keyword">$1</span>');
-  }
-
-  return code;
+  return res
+    .replace(/\x01([a-z-]+)\x02/g, '<span class="$1">')
+    .replace(/\x03/g, '</span>');
 }
 
 /* ------------------------------------------------------------------ */
