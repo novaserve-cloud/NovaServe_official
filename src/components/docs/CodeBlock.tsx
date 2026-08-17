@@ -12,40 +12,40 @@ function highlightCode(code: string, language: string): string {
 
   if (language === "bash" || language === "shell") {
     res = res
-      .replace(/(#.*)$/gm, '[[SYN:syn-comment]]$1[[/SYN]]')
-      .replace(/^(\$\s)/gm, '[[SYN:syn-prompt]]$1[[/SYN]]')
-      .replace(/("(?:[^"\\]|\\.)*")/g, '[[SYN:syn-string]]$1[[/SYN]]')
+      .replace(/(#.*)$/gm, '[[comment]]$1[[/comment]]')
+      .replace(/^(\$\s)/gm, '[[prompt]]$1[[/prompt]]')
+      .replace(/("(?:[^"\\]|\\.)*")/g, '[[string]]$1[[/string]]')
       .replace(
         /\b(npm|npx|pnpm|yarn|bun|nova|novaserve|curl|cd|git|clone|install|run|build|dev|deploy|init|compile|plan|drift|destroy|doctor)\b/g,
-        '[[SYN:syn-keyword]]$1[[/SYN]]'
+        '[[keyword]]$1[[/keyword]]'
       )
-      .replace(/(--?[\w-]+)/g, '[[SYN:syn-flag]]$1[[/SYN]]');
+      .replace(/(--?[\w-]+)/g, '[[flag]]$1[[/flag]]');
   } else if (language === "typescript" || language === "ts" || language === "javascript" || language === "js") {
     res = res
-      .replace(/(\/\/.*)$/gm, '[[SYN:syn-comment]]$1[[/SYN]]')
-      .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)/g, '[[SYN:syn-string]]$1[[/SYN]]')
+      .replace(/(\/\/.*)$/gm, '[[comment]]$1[[/comment]]')
+      .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)/g, '[[string]]$1[[/string]]')
       .replace(
         /\b(import|export|from|const|let|var|function|async|await|return|if|else|try|catch|throw|new|typeof|for|of|in|class|extends|interface|type)\b/g,
-        '[[SYN:syn-keyword]]$1[[/SYN]]'
+        '[[keyword]]$1[[/keyword]]'
       )
-      .replace(/\b(true|false|null|undefined|void)\b/g, '[[SYN:syn-literal]]$1[[/SYN]]')
-      .replace(/\b(\d+)\b/g, '[[SYN:syn-number]]$1[[/SYN]]')
-      .replace(/\b(defineApp|defineConfig|api|storage|queue|database)\b/g, '[[SYN:syn-fn]]$1[[/SYN]]');
+      .replace(/\b(true|false|null|undefined|void)\b/g, '[[literal]]$1[[/literal]]')
+      .replace(/\b(\d+)\b/g, '[[number]]$1[[/number]]')
+      .replace(/\b(defineApp|defineConfig|api|storage|queue|database)\b/g, '[[fn]]$1[[/fn]]');
   } else if (language === "json") {
     res = res
-      .replace(/("(?:[^"\\]|\\.)*")(\s*:)/g, '[[SYN:syn-key]]$1[[/SYN]]$2')
-      .replace(/:(\s*)("(?:[^"\\]|\\.)*")/g, ':$1[[SYN:syn-string]]$2[[/SYN]]')
-      .replace(/\b(true|false|null)\b/g, '[[SYN:syn-literal]]$1[[/SYN]]')
-      .replace(/\b(\d+\.?\d*)\b/g, '[[SYN:syn-number]]$1[[/SYN]]');
+      .replace(/("(?:[^"\\]|\\.)*")(\s*:)/g, '[[key]]$1[[/key]]$2')
+      .replace(/:(\s*)("(?:[^"\\]|\\.)*")/g, ':$1[[string]]$2[[/string]]')
+      .replace(/\b(true|false|null)\b/g, '[[literal]]$1[[/literal]]')
+      .replace(/\b(\d+\.?\d*)\b/g, '[[number]]$1[[/number]]');
   } else if (language === "text" || language === "plaintext") {
     res = res
-      .replace(/^(\s*[✓✗✕+~\-●▸▹→])/gm, '[[SYN:syn-prompt]]$1[[/SYN]]')
-      .replace(/(\[[\w\s]+\])/g, '[[SYN:syn-keyword]]$1[[/SYN]]');
+      .replace(/^(\s*[✓✗✕+~\-●▸▹→])/gm, '[[prompt]]$1[[/prompt]]')
+      .replace(/(\[[\w\s]+\])/g, '[[keyword]]$1[[/keyword]]');
   }
 
   return res
-    .replace(/\[\[SYN:([a-z-]+)\]\]/g, '<span class="$1">')
-    .replace(/\[\[\/SYN\]\]/g, '</span>');
+    .replace(/\[\[([a-z]+)\]\]/g, '<span class="syn-$1">')
+    .replace(/\[\[\/([a-z]+)\]\]/g, '</span>');
 }
 
 /* ------------------------------------------------------------------ */
