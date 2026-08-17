@@ -12,40 +12,40 @@ function highlightCode(code: string, language: string): string {
 
   if (language === "bash" || language === "shell") {
     res = res
-      .replace(/(#.*)$/gm, '\x01syn-comment\x02$1\x03')
-      .replace(/^(\$\s)/gm, '\x01syn-prompt\x02$1\x03')
-      .replace(/("(?:[^"\\]|\\.)*")/g, '\x01syn-string\x02$1\x03')
+      .replace(/(#.*)$/gm, '[[SYN:syn-comment]]$1[[/SYN]]')
+      .replace(/^(\$\s)/gm, '[[SYN:syn-prompt]]$1[[/SYN]]')
+      .replace(/("(?:[^"\\]|\\.)*")/g, '[[SYN:syn-string]]$1[[/SYN]]')
       .replace(
         /\b(npm|npx|pnpm|yarn|bun|nova|novaserve|curl|cd|git|clone|install|run|build|dev|deploy|init|compile|plan|drift|destroy|doctor)\b/g,
-        '\x01syn-keyword\x02$1\x03'
+        '[[SYN:syn-keyword]]$1[[/SYN]]'
       )
-      .replace(/(--?[\w-]+)/g, '\x01syn-flag\x02$1\x03');
+      .replace(/(--?[\w-]+)/g, '[[SYN:syn-flag]]$1[[/SYN]]');
   } else if (language === "typescript" || language === "ts" || language === "javascript" || language === "js") {
     res = res
-      .replace(/(\/\/.*)$/gm, '\x01syn-comment\x02$1\x03')
-      .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)/g, '\x01syn-string\x02$1\x03')
+      .replace(/(\/\/.*)$/gm, '[[SYN:syn-comment]]$1[[/SYN]]')
+      .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`)/g, '[[SYN:syn-string]]$1[[/SYN]]')
       .replace(
         /\b(import|export|from|const|let|var|function|async|await|return|if|else|try|catch|throw|new|typeof|for|of|in|class|extends|interface|type)\b/g,
-        '\x01syn-keyword\x02$1\x03'
+        '[[SYN:syn-keyword]]$1[[/SYN]]'
       )
-      .replace(/\b(true|false|null|undefined|void)\b/g, '\x01syn-literal\x02$1\x03')
-      .replace(/\b(\d+)\b/g, '\x01syn-number\x02$1\x03')
-      .replace(/\b(defineApp|defineConfig|api|storage|queue|database)\b/g, '\x01syn-fn\x02$1\x03');
+      .replace(/\b(true|false|null|undefined|void)\b/g, '[[SYN:syn-literal]]$1[[/SYN]]')
+      .replace(/\b(\d+)\b/g, '[[SYN:syn-number]]$1[[/SYN]]')
+      .replace(/\b(defineApp|defineConfig|api|storage|queue|database)\b/g, '[[SYN:syn-fn]]$1[[/SYN]]');
   } else if (language === "json") {
     res = res
-      .replace(/("(?:[^"\\]|\\.)*")(\s*:)/g, '\x01syn-key\x02$1\x03$2')
-      .replace(/:(\s*)("(?:[^"\\]|\\.)*")/g, ':$1\x01syn-string\x02$2\x03')
-      .replace(/\b(true|false|null)\b/g, '\x01syn-literal\x02$1\x03')
-      .replace(/\b(\d+\.?\d*)\b/g, '\x01syn-number\x02$1\x03');
+      .replace(/("(?:[^"\\]|\\.)*")(\s*:)/g, '[[SYN:syn-key]]$1[[/SYN]]$2')
+      .replace(/:(\s*)("(?:[^"\\]|\\.)*")/g, ':$1[[SYN:syn-string]]$2[[/SYN]]')
+      .replace(/\b(true|false|null)\b/g, '[[SYN:syn-literal]]$1[[/SYN]]')
+      .replace(/\b(\d+\.?\d*)\b/g, '[[SYN:syn-number]]$1[[/SYN]]');
   } else if (language === "text" || language === "plaintext") {
     res = res
-      .replace(/^(\s*[✓✗✕+~\-●▸▹→])/gm, '\x01syn-prompt\x02$1\x03')
-      .replace(/(\[[\w\s]+\])/g, '\x01syn-keyword\x02$1\x03');
+      .replace(/^(\s*[✓✗✕+~\-●▸▹→])/gm, '[[SYN:syn-prompt]]$1[[/SYN]]')
+      .replace(/(\[[\w\s]+\])/g, '[[SYN:syn-keyword]]$1[[/SYN]]');
   }
 
   return res
-    .replace(/\x01([a-z-]+)\x02/g, '<span class="$1">')
-    .replace(/\x03/g, '</span>');
+    .replace(/\[\[SYN:([a-z-]+)\]\]/g, '<span class="$1">')
+    .replace(/\[\[\/SYN\]\]/g, '</span>');
 }
 
 /* ------------------------------------------------------------------ */
