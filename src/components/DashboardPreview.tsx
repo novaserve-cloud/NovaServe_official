@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { LayoutDashboard, Server, ShieldCheck, Activity, DollarSign, Database, GitBranch, Terminal, RefreshCw, CheckCircle2, Lock } from "lucide-react";
+import { LayoutDashboard, Server, ShieldCheck, Activity, DollarSign, Database, GitBranch, Terminal, RefreshCw, CheckCircle2, Lock, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "./Icons";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export function DashboardPreview() {
   const [activeTab, setActiveTab] = useState<string>("deployments");
@@ -17,30 +18,33 @@ export function DashboardPreview() {
   ];
 
   return (
-    <section className="py-24 bg-white border-t border-gray-200 relative z-10 text-gray-900 selection:bg-[#FFB020]/40 selection:text-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-xs font-mono text-amber-900 font-extrabold">
-            <LayoutDashboard className="w-3.5 h-3.5 text-[#FFB020]" />
-            <span>MANAGEMENT CONSOLE</span>
+    <section className="bg-white dark:bg-[#0A0A0B] border-t border-gray-200 dark:border-gray-800 relative z-10 text-gray-900 dark:text-gray-100 selection:bg-[#FFB020]/40 selection:text-black overflow-hidden">
+      <ContainerScroll
+        titleComponent={
+          <div className="space-y-4 mb-4">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-800 text-xs font-mono text-amber-900 dark:text-amber-300 font-extrabold">
+              <LayoutDashboard className="w-3.5 h-3.5 text-[#FFB020]" />
+              <span>ENTERPRISE MANAGEMENT CONSOLE</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-gray-900 dark:text-white font-sans">
+              Realtime Multi-Cloud <br />
+              <span className="text-[#FFB020] inline-block mt-1">Infrastructure Control Center</span>
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-semibold leading-relaxed max-w-2xl mx-auto font-sans">
+              Monitor, inspect, and optimize all deployed multi-cloud resources, DAG dependencies, and compiler state diffs from a single developer pane.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-gray-900">
-            Realtime Infrastructure Control Center
-          </h2>
-          <p className="text-base sm:text-lg text-gray-600 font-semibold leading-relaxed">
-            Monitor, inspect, and optimize all deployed multi-cloud resources and compiler state diffs from a single developer console.
-          </p>
-        </div>
-
+        }
+      >
         {/* 21st.dev style Console Preview Window */}
-        <div className="rounded-3xl bg-[#0C0B12] border border-[#26223B] shadow-2xl p-6 overflow-hidden text-white font-mono">
+        <div className="h-full w-full bg-[#0C0B12] text-white p-4 sm:p-6 overflow-hidden font-mono flex flex-col justify-between">
           {/* Tab Selection */}
           <div className="flex items-center space-x-2 border-b border-[#231F38] pb-4 overflow-x-auto">
             {tabs.map((t) => (
               <button
                 key={t.id}
                 onClick={() => setActiveTab(t.id)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0 ${
                   activeTab === t.id
                     ? "bg-[#FFB020] text-black shadow-md"
                     : "text-gray-400 hover:bg-[#1B182B] hover:text-white"
@@ -53,35 +57,35 @@ export function DashboardPreview() {
           </div>
 
           {/* Console Area with Animated States */}
-          <div className="mt-6 space-y-4 text-xs">
+          <div className="mt-4 space-y-4 text-xs">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-[#231F38] pb-3 text-gray-300">
               <div className="flex items-center space-x-3">
                 <span className="flex items-center space-x-2 text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-3 py-1 rounded-full text-xs font-bold">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span>ENVIRONMENT: PRODUCTION (ACTIVE)</span>
                 </span>
-                <span className="text-gray-500 font-mono text-[11px]">Region: ap-south-1 & Global Edge</span>
+                <span className="text-gray-500 font-mono text-[11px]">Region: ap-south-1 &amp; Global Edge</span>
               </div>
               <span className="text-gray-400 font-bold">AVG COLD START: 4ms</span>
             </div>
 
             {/* Metric KPI Chips */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
-              <div className="p-5 rounded-2xl bg-[#141220] border border-[#27233D] space-y-1.5 shadow-sm">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+              <div className="p-4 rounded-2xl bg-[#141220] border border-[#27233D] space-y-1 shadow-sm">
                 <div className="text-[10px] text-gray-400 uppercase font-bold">ACTIVE EDGE REGIONS</div>
-                <div className="text-2xl font-black text-white">320 Edge PoPs</div>
+                <div className="text-xl sm:text-2xl font-black text-white">320 Edge PoPs</div>
                 <div className="text-[10px] text-blue-400 font-bold">Cloudflare Workers + AWS</div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#141220] border border-[#27233D] space-y-1.5 shadow-sm">
+              <div className="p-4 rounded-2xl bg-[#141220] border border-[#27233D] space-y-1 shadow-sm">
                 <div className="text-[10px] text-gray-400 uppercase font-bold">PROJECTED CLOUD EXPENDITURE</div>
-                <div className="text-2xl font-black text-amber-300">$42.80 <span className="text-xs font-normal text-gray-400">/ mo</span></div>
+                <div className="text-xl sm:text-2xl font-black text-amber-300">$42.80 <span className="text-xs font-normal text-gray-400">/ mo</span></div>
                 <div className="text-[10px] text-emerald-400 font-bold">100% Zero unexpected charges</div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#141220] border border-[#27233D] space-y-1.5 shadow-sm">
+              <div className="p-4 rounded-2xl bg-[#141220] border border-[#27233D] space-y-1 shadow-sm">
                 <div className="text-[10px] text-gray-400 uppercase font-bold">ZERO-TRUST IAM AUDIT</div>
-                <div className="text-2xl font-black text-emerald-400">100% COMPLIANT</div>
+                <div className="text-xl sm:text-2xl font-black text-emerald-400">100% COMPLIANT</div>
                 <div className="text-[10px] text-gray-400 font-bold">Static Least-Privilege Pass</div>
               </div>
             </div>
@@ -94,7 +98,7 @@ export function DashboardPreview() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.2 }}
-                className="mt-4 p-4 rounded-2xl bg-[#08070D] border border-[#1F1B30] text-gray-300 space-y-2 font-mono text-xs"
+                className="mt-3 p-4 rounded-2xl bg-[#08070D] border border-[#1F1B30] text-gray-300 space-y-2 font-mono text-xs"
               >
                 {activeTab === "deployments" && (
                   <div className="space-y-1.5">
@@ -157,7 +161,8 @@ export function DashboardPreview() {
             </AnimatePresence>
           </div>
         </div>
-      </div>
+      </ContainerScroll>
     </section>
   );
 }
+
