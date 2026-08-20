@@ -68,6 +68,10 @@ code, pre, kbd {
 /*  ANIMATIONS                                                         */
 /* ================================================================== */
 
+/* ================================================================== */
+/*  ANIMATIONS & 21ST.DEV UTILITIES                                    */
+/* ================================================================== */
+
 @keyframes marquee {
   0%   { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
@@ -76,7 +80,7 @@ code, pre, kbd {
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 25s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 .animate-marquee:hover {
   animation-play-state: paused;
@@ -94,9 +98,56 @@ code, pre, kbd {
   animation: float 5s ease-in-out 2s infinite;
 }
 
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite;
+}
+
 /* ================================================================== */
-/*  UTILITY CLASSES                                                    */
+/*  UTILITY CLASSES & GLOW EFFECTS                                     */
 /* ================================================================== */
+
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+}
+
+.glow-ambient-amber {
+  background: radial-gradient(circle at 50% 30%, rgba(255, 176, 32, 0.12) 0%, transparent 70%);
+}
+
+.glow-card-border {
+  position: relative;
+}
+.glow-card-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to bottom right, rgba(255, 176, 32, 0.4), transparent, rgba(255, 176, 32, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
 
 .bg-nova-bg      { background-color: var(--background); }
 .bg-nova-card    { background-color: var(--card); }

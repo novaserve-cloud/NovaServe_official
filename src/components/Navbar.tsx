@@ -15,7 +15,9 @@ import {
   BarChart3,
   Sparkles,
   ArrowRight,
+  Terminal,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "@/components/Icons";
 
 export function Navbar() {
@@ -43,33 +45,33 @@ export function Navbar() {
   ];
 
   const productMenuItems = [
-    { title: "Core Compiler Engine", desc: "TypeScript & Python AST to multi-cloud plans", href: "/architecture", icon: <Cpu className="w-5 h-5 text-amber-500" /> },
-    { title: "Provider Matrix", desc: "Native AWS, Cloudflare, Docker, GCP & Azure specs", href: "/providers", icon: <Boxes className="w-5 h-5 text-emerald-600" /> },
+    { title: "Core Compiler Engine", desc: "TypeScript AST to multi-cloud plans", href: "/architecture", icon: <Cpu className="w-5 h-5 text-amber-500" /> },
+    { title: "Provider Matrix", desc: "Native AWS, Cloudflare, Docker & GCP specs", href: "/providers", icon: <Boxes className="w-5 h-5 text-emerald-600" /> },
     { title: "Performance Benchmarks", desc: "0.38s compile time & 4ms edge cold starts", href: "/comparison", icon: <BarChart3 className="w-5 h-5 text-[#FFB020]" /> },
-    { title: "Enterprise Security", desc: "SOC2 Type II, zero-trust IAM generation & CSP audit", href: "/security", icon: <ShieldCheck className="w-5 h-5 text-indigo-600" /> },
+    { title: "Enterprise Security", desc: "Zero-trust IAM generation & CSP audit", href: "/security", icon: <ShieldCheck className="w-5 h-5 text-indigo-600" /> },
   ];
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      {/* Pulumi-style Top Announcement Banner Bar */}
+      {/* Top Announcement Banner Bar */}
       {bannerVisible && (
-        <div className="bg-[#100D23] text-white text-xs font-mono py-2 px-4 flex items-center justify-between border-b border-[#252044] dark:border-gray-800">
+        <div className="bg-[#0D0B18] text-white text-xs font-mono py-2 px-4 flex items-center justify-between border-b border-[#231F3B]">
           <div className="max-w-7xl mx-auto flex items-center justify-center space-x-2 text-center w-full">
-            <span className="text-[#FFB020]">✦</span>
+            <span className="text-[#FFB020] animate-pulse">✦</span>
             <span className="font-medium text-gray-200">
-              Latest release (v2.1.10): Core Package Updates, Performance Improvements & Bug Fixes.
+              Latest release (v2.1.10): Core Package Updates, Sub-second AST Compiler & Bug Fixes.
             </span>
             <Link
               href="/changelog"
               prefetch={true}
-              className="bg-[#26204B] hover:bg-[#38306D] text-white px-2.5 py-0.5 rounded text-[11px] font-semibold transition-colors inline-flex items-center space-x-1 ml-2"
+              className="bg-[#241F40] hover:bg-[#342D5C] text-amber-300 hover:text-white px-2.5 py-0.5 rounded-md text-[11px] font-semibold transition-colors inline-flex items-center space-x-1 ml-2 border border-[#383060]"
             >
-              <span>See the release</span>
+              <span>See release</span>
             </Link>
           </div>
           <button
             onClick={() => setBannerVisible(false)}
-            className="text-gray-400 hover:text-white p-1 text-xs font-bold"
+            className="text-gray-400 hover:text-white p-1 text-xs font-bold cursor-pointer"
             aria-label="Close Announcement"
           >
             ✕
@@ -81,7 +83,7 @@ export function Navbar() {
       <header
         className={`transition-all duration-300 ${
           scrolled
-            ? "bg-white/95 dark:bg-[#0A0A0B]/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-sm py-3"
+            ? "bg-white/90 dark:bg-[#0A0A0B]/90 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 shadow-md py-3"
             : "bg-white dark:bg-[#0A0A0B] border-b border-gray-100 dark:border-gray-800 py-3.5"
         }`}
       >
@@ -90,7 +92,7 @@ export function Navbar() {
             {/* Logo & Main Nav */}
             <div className="flex items-center space-x-8">
               <Link href="/" prefetch={true} className="flex items-center space-x-3 group cursor-pointer">
-                <div className="w-8 h-8 rounded-xl bg-[#FFB020] p-0.5 shadow-md group-hover:shadow-[#FFB020]/50 transition-all duration-300 flex items-center justify-center text-black">
+                <div className="w-8 h-8 rounded-xl bg-[#FFB020] p-0.5 shadow-md group-hover:shadow-[#FFB020]/40 transition-all duration-300 flex items-center justify-center text-black">
                   <DiamondIcon size={20} />
                 </div>
                 <span className="text-xl font-black text-gray-900 dark:text-gray-100 tracking-tight">
@@ -100,41 +102,49 @@ export function Navbar() {
 
               {/* Desktop Navigation Links */}
               <nav className="hidden lg:flex items-center space-x-1 font-sans text-sm font-semibold text-gray-700 dark:text-gray-300">
-                {/* Product Megamenu */}
+                {/* Product Dropdown */}
                 <div
                   className="relative"
                   onMouseEnter={() => setProductMenuOpen(true)}
                   onMouseLeave={() => setProductMenuOpen(false)}
                 >
-                  <button className="flex items-center space-x-1 px-3 py-2 rounded-lg hover:text-amber-600 hover:bg-amber-50/60 transition-all">
+                  <button className="flex items-center space-x-1 px-3 py-2 rounded-lg hover:text-amber-700 hover:bg-amber-50/60 transition-all cursor-pointer">
                     <span>Product</span>
                     <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${productMenuOpen ? "rotate-180 text-amber-600" : "text-gray-500"}`} />
                   </button>
 
-                  {productMenuOpen && (
-                    <div className="absolute top-full left-0 w-[520px] mt-1 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl p-4 grid grid-cols-2 gap-3 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                      {productMenuItems.map((item, idx) => (
-                        <Link
-                          key={idx}
-                          href={item.href}
-                          prefetch={true}
-                          className="flex items-start space-x-3 p-3 rounded-xl hover:bg-amber-50/70 transition-colors group cursor-pointer"
-                        >
-                          <div className="p-2 rounded-lg bg-gray-100 border border-gray-200 group-hover:border-amber-300 transition-colors">
-                            {item.icon}
-                          </div>
-                          <div>
-                            <div className="text-sm font-bold text-gray-900 group-hover:text-amber-600 transition-colors">
-                              {item.title}
+                  <AnimatePresence>
+                    {productMenuOpen && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 8 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute top-full left-0 w-[520px] mt-1 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-2xl p-4 grid grid-cols-2 gap-3 z-50"
+                      >
+                        {productMenuItems.map((item, idx) => (
+                          <Link
+                            key={idx}
+                            href={item.href}
+                            prefetch={true}
+                            className="flex items-start space-x-3 p-3 rounded-xl hover:bg-amber-50/70 transition-colors group cursor-pointer"
+                          >
+                            <div className="p-2 rounded-lg bg-gray-100 border border-gray-200 group-hover:border-amber-300 transition-colors">
+                              {item.icon}
                             </div>
-                            <div className="text-xs text-gray-500 leading-relaxed mt-0.5 font-normal">
-                              {item.desc}
+                            <div>
+                              <div className="text-sm font-bold text-gray-900 group-hover:text-amber-600 transition-colors">
+                                {item.title}
+                              </div>
+                              <div className="text-xs text-gray-500 leading-relaxed mt-0.5 font-normal">
+                                {item.desc}
+                              </div>
                             </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {navLinks.map((link) => {
@@ -146,8 +156,8 @@ export function Navbar() {
                       prefetch={true}
                       className={`px-3 py-2 rounded-lg transition-all cursor-pointer ${
                         isActive
-                          ? "text-amber-800 bg-amber-100/70 font-bold"
-                          : "hover:text-amber-600 hover:bg-gray-50"
+                          ? "text-amber-900 bg-amber-100/70 font-bold"
+                          : "hover:text-amber-700 hover:bg-gray-50"
                       }`}
                     >
                       {link.name}
@@ -157,44 +167,39 @@ export function Navbar() {
               </nav>
             </div>
 
-            {/* Right Side Controls (Pulumi Style) */}
+            {/* Right Side Controls */}
             <div className="hidden sm:flex items-center space-x-4">
               {/* GitHub Star Pill */}
               <a
                 href="https://github.com/novaserve-cloud/novaserve"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-1.5 text-xs font-mono text-gray-700 hover:text-amber-600 transition-colors cursor-pointer"
+                className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 text-xs font-mono text-gray-800 transition-colors cursor-pointer"
               >
                 <Github className="w-4 h-4 text-gray-900" />
-                <span className="font-bold">v2.1.10</span>
+                <span className="font-bold text-gray-900">v2.1.10</span>
               </a>
 
-              {/* Contact Us */}
-              <Link
-                href="/contact"
-                prefetch={true}
-                className="text-sm font-semibold text-gray-700 hover:text-amber-600 transition-colors px-2 py-1 cursor-pointer"
+              {/* Quick Search Keyboard trigger hint */}
+              <button
+                onClick={() => {
+                  const event = new KeyboardEvent('keydown', {'key': 'k', 'metaKey': true});
+                  document.dispatchEvent(event);
+                }}
+                className="hidden md:flex items-center space-x-2 px-2.5 py-1.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-500 hover:border-gray-400 transition-colors cursor-pointer"
               >
-                Contact us
-              </Link>
-
-              {/* Sign In */}
-              <Link
-                href="/signin"
-                prefetch={true}
-                className="text-sm font-semibold text-gray-700 hover:text-amber-600 transition-colors px-2 py-1 cursor-pointer"
-              >
-                Sign in
-              </Link>
+                <Search className="w-3.5 h-3.5" />
+                <span className="font-mono text-[11px]">Search</span>
+                <kbd className="px-1.5 py-0.5 rounded bg-white border border-gray-200 text-[10px] font-mono">⌘K</kbd>
+              </button>
 
               {/* Get Started CTA */}
               <Link
                 href="/docs"
                 prefetch={true}
-                className="px-4 py-2 rounded-xl bg-[#FFB020] hover:bg-[#FFC44D] text-black text-sm font-bold shadow-md hover:shadow-lg transition-all transform active:scale-95 cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-[#FFB020] hover:bg-[#FFC44D] text-black text-sm font-bold shadow-md hover:shadow-lg transition-all transform active:scale-95 cursor-pointer border border-amber-300/60"
               >
-                Get started
+                Get Started
               </Link>
             </div>
 
@@ -202,7 +207,7 @@ export function Navbar() {
             <div className="flex sm:hidden items-center space-x-2">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900"
+                className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 cursor-pointer"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>

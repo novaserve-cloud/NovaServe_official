@@ -235,3 +235,43 @@ export const DiamondIcon = ({ size = 20, className = "", ...props }: IconProps) 
     />
   </svg>
 );
+
+// 16. Official Kubernetes Logo
+export const KubernetesIcon = ({ size = 20, className = "", ...props }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={`inline-block ${className}`}
+    {...props}
+  >
+    <path
+      d="M12 2L3.5 6.9v9.8L12 21.6l8.5-4.9V6.9L12 2zm0 2.3l6.5 3.8v7.5L12 19.3 5.5 15.6V8.1L12 4.3z"
+      fill="#326CE5"
+    />
+    <path
+      d="M12 7.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9zm0 2a2.5 2.5 0 110 5 2.5 2.5 0 010-5z"
+      fill="#326CE5"
+    />
+  </svg>
+);
+
+// 17. Official Terraform Logo
+export const TerraformIcon = ({ size = 20, className = "", ...props }: IconProps) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={`inline-block ${className}`}
+    {...props}
+  >
+    <path d="M1.5 1.5h6.5v6.5H1.5z" fill="#5C4EE5" />
+    <path d="M8.75 5.5h6.5v6.5h-6.5z" fill="#5C4EE5" />
+    <path d="M8.75 12.75h6.5v6.5h-6.5z" fill="#5C4EE5" />
+    <path d="M16 9h6.5v6.5H16z" fill="#5C4EE5" />
+  </svg>
+);
+
+

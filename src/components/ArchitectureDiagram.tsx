@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Cpu, Layers, Boxes, ShieldCheck, Zap, ArrowRight, FileCode2, CheckCircle2 } from "lucide-react";
-import { DiamondIcon, AwsIcon, CloudflareIcon, DockerIcon } from "./Icons";
+import { Cpu, Layers, Boxes, ShieldCheck, Zap, ArrowRight, FileCode2, CheckCircle2, Check, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { DiamondIcon, AwsIcon, AzureIcon, CloudflareIcon, KubernetesIcon, DockerIcon } from "./Icons";
 
 interface StageData {
   title: string;
@@ -100,50 +101,57 @@ const result = await adapter.deploy(irArtifact);
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-gray-900">
             NovaServe Compiler Pipeline
           </h2>
-          <p className="text-base sm:text-lg text-gray-600 font-semibold">
+          <p className="text-base sm:text-lg text-gray-600 font-semibold leading-relaxed">
             Select a stage below to inspect how NovaServe transforms source code into zero-drift cloud deployments.
           </p>
         </div>
 
-        {/* Stage Selection Buttons */}
+        {/* Stage Selection Tabs with Motion */}
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
           {stages.map((stg, i) => (
-            <button
+            <motion.button
               key={i}
               onClick={() => setActiveStage(i)}
-              className={`p-4 rounded-2xl border text-left font-mono transition-all cursor-pointer ${
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className={`p-4 rounded-2xl border text-left font-mono transition-all cursor-pointer relative overflow-hidden ${
                 activeStage === i
-                  ? "bg-[#FFB020] text-black border-[#FFB020] font-black shadow-lg scale-102"
-                  : "bg-white border-gray-200 text-gray-700 hover:bg-gray-50 font-bold"
+                  ? "bg-white border-[#FFB020] shadow-lg ring-2 ring-[#FFB020]/30"
+                  : "bg-gray-50/80 border-gray-200 text-gray-700 hover:bg-white"
               }`}
             >
-              <div className="text-xs uppercase opacity-90">{stg.title}</div>
-              <div className="text-[11px] mt-1 line-clamp-1 opacity-80">{stg.desc}</div>
-            </button>
+              {activeStage === i && (
+                <div className="absolute top-0 left-0 right-0 h-1 bg-[#FFB020]" />
+              )}
+              <div className="flex items-center justify-between">
+                <div className="text-xs uppercase font-black text-gray-900">{stg.title}</div>
+                {activeStage === i && <span className="w-2 h-2 rounded-full bg-[#FFB020] animate-pulse" />}
+              </div>
+              <div className="text-[11px] mt-1 line-clamp-1 text-gray-500 font-semibold">{stg.desc}</div>
+            </motion.button>
           ))}
         </div>
 
         {/* Dynamic Interactive Stage Display Card */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-gray-200 shadow-2xl space-y-6 animate-in fade-in zoom-in-95 duration-200">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-gray-200 shadow-2xl space-y-6">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-gray-200 pb-4 gap-4">
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-xl bg-[#FFB020] text-black p-1.5 flex items-center justify-center font-bold shadow-md">
-                <DiamondIcon size={20} />
+              <div className="w-10 h-10 rounded-2xl bg-[#FFB020] text-black p-2 flex items-center justify-center font-bold shadow-md">
+                <DiamondIcon size={22} />
               </div>
               <div>
-                <h3 className="text-xl font-black text-gray-900">{current.title} Details</h3>
+                <h3 className="text-xl font-black text-gray-900">{current.title} Breakdown</h3>
                 <p className="text-xs text-gray-500 font-semibold">{current.desc}</p>
               </div>
             </div>
 
-            <span className="px-3 py-1 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-900 font-mono text-xs font-bold">
+            <span className="px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-300 text-emerald-800 font-mono text-xs font-bold">
               {current.badge}
             </span>
           </div>
 
           {/* 3 Step Cards: Input -> Transformation -> Output */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-            
             {/* Input Spec */}
             <div className="p-5 rounded-2xl bg-gray-50 border border-gray-200 space-y-2">
               <span className="text-[10px] font-mono text-gray-500 uppercase font-bold tracking-wider">
@@ -154,7 +162,7 @@ const result = await adapter.deploy(irArtifact);
             </div>
 
             {/* Transformation Pass */}
-            <div className="p-5 rounded-2xl bg-amber-50/80 border border-amber-200 space-y-2">
+            <div className="p-5 rounded-2xl bg-amber-50/90 border border-amber-200 space-y-2">
               <span className="text-[10px] font-mono text-amber-900 uppercase font-extrabold tracking-wider">
                 2. TRANSFORMATION PASS
               </span>
@@ -172,14 +180,15 @@ const result = await adapter.deploy(irArtifact);
                 {activeStage === 3 && (
                   <span className="flex items-center space-x-1.5 shrink-0 ml-1">
                     <AwsIcon size={14} />
+                    <AzureIcon size={14} />
                     <CloudflareIcon size={14} />
+                    <KubernetesIcon size={14} />
                     <DockerIcon size={14} />
                   </span>
                 )}
               </div>
               <div className="text-xs text-emerald-700 font-bold">{current.targetDesc}</div>
             </div>
-
           </div>
 
           {/* Dynamic Code & Terminal Snippet Box */}
@@ -197,7 +206,6 @@ const result = await adapter.deploy(irArtifact);
               <code>{current.codeSnippet}</code>
             </pre>
           </div>
-
         </div>
       </div>
     </section>
