@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, ChevronRight, Copy, Check, Terminal, Sparkles, ShieldCheck, Zap, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import { HeroPipeline } from "./HeroPipeline";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 
 export function Hero() {
   const [copied, setCopied] = useState(false);
@@ -75,13 +76,8 @@ export function Hero() {
             <div className="space-y-4 pt-2">
               <div className="flex flex-wrap items-center gap-3.5">
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                  <Link
-                    href="/docs"
-                    prefetch={true}
-                    className="px-6 py-3.5 rounded-xl bg-[#FFB020] hover:bg-[#FFC44D] text-black font-bold text-base shadow-lg hover:shadow-[#FFB020]/25 transition-all flex items-center space-x-2 group cursor-pointer border border-amber-300/60"
-                  >
-                    <span>Get Started Free</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <Link href="/docs" prefetch={true}>
+                    <InteractiveHoverButton text="Get Started Free" className="px-6 py-3.5 text-base font-black shadow-lg" />
                   </Link>
                 </motion.div>
 

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ArrowRight, Terminal, Copy, Check, Sparkles, Github } from "lucide-react";
 import { motion } from "framer-motion";
 
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+
 export function CTASection() {
   const [copied, setCopied] = useState(false);
   const command = "npm install -g @novaserve/cli && nova init";
@@ -73,12 +75,8 @@ export function CTASection() {
           {/* Action CTAs */}
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-              <Link
-                href="/docs"
-                className="px-8 py-4 rounded-2xl bg-[#FFB020] hover:bg-[#FFC44D] text-black font-black text-sm shadow-xl hover:shadow-[#FFB020]/30 transition-all flex items-center space-x-2 cursor-pointer border border-amber-300/60"
-              >
-                <span>Get Started Free</span>
-                <ArrowRight className="w-4 h-4" />
+              <Link href="/docs">
+                <InteractiveHoverButton text="Get Started Free" className="px-8 py-3.5 text-sm font-black shadow-xl" />
               </Link>
             </motion.div>
 

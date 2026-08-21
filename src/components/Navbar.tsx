@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "@/components/Icons";
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -203,12 +205,8 @@ export function Navbar() {
               </Link>
 
               {/* Get Started CTA */}
-              <Link
-                href="/docs"
-                prefetch={true}
-                className="px-4 py-2 rounded-xl bg-[#FFB020] hover:bg-[#FFC44D] text-black text-sm font-bold shadow-md hover:shadow-lg transition-all transform active:scale-95 cursor-pointer border border-amber-300/60"
-              >
-                Get Started
+              <Link href="/docs" prefetch={true}>
+                <InteractiveHoverButton text="Get Started" className="px-5 py-2 text-xs font-black" />
               </Link>
             </div>
 
@@ -264,9 +262,8 @@ export function Navbar() {
                   href="/docs"
                   prefetch={true}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-[#FFB020] text-black text-xs font-bold"
                 >
-                  Get started
+                  <InteractiveHoverButton text="Get started" className="px-4 py-1.5 text-xs font-black" />
                 </Link>
               </div>
             </div>
