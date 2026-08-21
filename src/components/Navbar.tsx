@@ -195,9 +195,18 @@ export function Navbar() {
                 <kbd className="px-1.5 py-0.5 rounded bg-white border border-gray-200 text-[10px] font-mono">⌘K</kbd>
               </button>
 
-              {/* Sign In Button */}
-              <Link href="/signin" prefetch={true}>
-                <InteractiveHoverButton text="Sign In" className="px-5 py-2 text-xs font-black" />
+              {/* Sign In Link */}
+              <Link
+                href="/signin"
+                prefetch={true}
+                className="px-3 py-2 rounded-xl text-xs font-bold text-gray-700 dark:text-gray-300 hover:text-gray-950 dark:hover:text-white transition-colors cursor-pointer"
+              >
+                Sign In
+              </Link>
+
+              {/* Get Started Free CTA with Interactive Hover Effect */}
+              <Link href="/docs" prefetch={true}>
+                <InteractiveHoverButton text="Get Started Free" className="px-5 py-2 text-xs font-black" />
               </Link>
             </div>
 
@@ -245,8 +254,16 @@ export function Navbar() {
                   href="/signin"
                   prefetch={true}
                   onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2 rounded-xl text-xs font-bold text-gray-700 dark:text-gray-300"
                 >
-                  <InteractiveHoverButton text="Sign In" className="px-4 py-1.5 text-xs font-black" />
+                  Sign In
+                </Link>
+                <Link
+                  href="/docs"
+                  prefetch={true}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <InteractiveHoverButton text="Get Started Free" className="px-4 py-1.5 text-xs font-black" />
                 </Link>
               </div>
             </div>
