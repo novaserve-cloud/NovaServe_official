@@ -104,22 +104,23 @@ const Label = React.forwardRef<
 Label.displayName = LabelPrimitive.Root.displayName;
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFB020] disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 cursor-pointer select-none",
   {
     variants: {
       variant: {
-        default: "bg-[#FFB020] text-black hover:bg-[#FFC44D] font-bold shadow-md",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-gray-300 dark:border-gray-700 bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        default: "bg-[#FFB020] text-black hover:bg-[#FFC44D] shadow-md hover:shadow-lg font-black active:scale-[0.98]",
+        destructive: "bg-red-600 text-white hover:bg-red-700 shadow-md",
+        outline: "border border-gray-300 dark:border-[#2F294C] bg-white dark:bg-[#141222] text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-[#1F1B36] shadow-xs active:scale-[0.98]",
+        secondary: "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700",
+        ghost: "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200",
         link: "text-amber-800 dark:text-amber-400 underline-offset-4 hover:underline font-bold",
+        github: "bg-[#181622] hover:bg-black text-white border border-[#2E284A] shadow-md hover:shadow-lg active:scale-[0.98]",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-12 rounded-md px-6",
-        icon: "h-8 w-8",
+        default: "h-11 px-4 py-2.5",
+        sm: "h-9 rounded-lg px-3 text-xs",
+        lg: "h-12 rounded-xl px-6 text-base",
+        icon: "h-9 w-9",
       },
     },
     defaultVariants: {
@@ -145,7 +146,7 @@ const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
       <input
         type={type}
         className={cn(
-          "flex h-10 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-background px-3.5 py-3 text-sm text-foreground shadow-xs transition-shadow placeholder:text-muted-foreground/70 focus-visible:border-[#FFB020] focus-visible:ring-1 focus-visible:ring-[#FFB020] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+          "flex h-11 w-full rounded-xl border border-gray-300 dark:border-[#2C2648] bg-white dark:bg-[#12101F] px-3.5 py-2.5 text-sm text-gray-900 dark:text-white shadow-xs transition-colors placeholder:text-gray-400 dark:placeholder:text-gray-500 focus-visible:border-[#FFB020] focus-visible:ring-1 focus-visible:ring-[#FFB020] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
           className
         )}
         ref={ref}
@@ -165,11 +166,11 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
     return (
-      <div className="grid w-full items-center gap-2">
+      <div className="grid w-full items-center gap-1.5">
         {label && <Label htmlFor={id} className="text-xs font-bold font-mono text-gray-700 dark:text-gray-300 uppercase tracking-wider">{label}</Label>}
         <div className="relative">
           <Input id={id} type={showPassword ? "text" : "password"} className={cn("pe-10", className)} ref={ref} {...props} />
-          <button type="button" onClick={togglePasswordVisibility} className="absolute inset-y-0 end-0 flex h-full w-10 items-center justify-center text-muted-foreground/80 transition-colors hover:text-foreground focus-visible:text-foreground focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 cursor-pointer" aria-label={showPassword ? "Hide password" : "Show password"}>
+          <button type="button" onClick={togglePasswordVisibility} className="absolute inset-y-0 end-0 flex h-full w-10 items-center justify-center text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors focus-visible:outline-none cursor-pointer" aria-label={showPassword ? "Hide password" : "Show password"}>
             {showPassword ? (<EyeOff className="size-4" aria-hidden="true" />) : (<Eye className="size-4" aria-hidden="true" />)}
           </button>
         </div>
@@ -193,10 +194,10 @@ function SignInForm() {
   };
 
   return (
-    <form onSubmit={handleSignIn} autoComplete="on" className="flex flex-col gap-6">
-      <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-black tracking-tight text-gray-900 dark:text-white">Sign in to NovaServe</h1>
-        <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Enter your cloud credentials to manage deployments</p>
+    <form onSubmit={handleSignIn} autoComplete="on" className="flex flex-col gap-5">
+      <div className="flex flex-col items-center gap-1.5 text-center">
+        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-gray-900 dark:text-white">Sign in to NovaServe</h1>
+        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium">Enter your cloud credentials to manage deployments</p>
       </div>
       {success ? (
         <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-center space-y-1">
@@ -204,13 +205,13 @@ function SignInForm() {
           <div className="text-xs text-gray-600 dark:text-gray-400 font-mono">Redirecting to console...</div>
         </div>
       ) : (
-        <div className="grid gap-4 font-mono">
-          <div className="grid gap-2">
+        <div className="grid gap-3.5 font-mono">
+          <div className="grid gap-1.5">
             <Label htmlFor="email" className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Work Email</Label>
             <Input id="email" name="email" type="email" placeholder="dev@company.com" required autoComplete="email" />
           </div>
           <PasswordInput name="password" label="Password" required autoComplete="current-password" placeholder="••••••••" />
-          <Button type="submit" variant="default" className="mt-2 text-sm font-black py-3 rounded-xl">
+          <Button type="submit" variant="default" className="mt-2 text-sm font-black w-full">
             {loading ? "Authenticating..." : "Sign In with Credentials"}
           </Button>
         </div>
@@ -233,10 +234,10 @@ function SignUpForm() {
   };
 
   return (
-    <form onSubmit={handleSignUp} autoComplete="on" className="flex flex-col gap-6">
-      <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-black tracking-tight text-gray-900 dark:text-white">Create Developer Account</h1>
-        <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">Get started with zero-drift compiler cloud architecture</p>
+    <form onSubmit={handleSignUp} autoComplete="on" className="flex flex-col gap-5">
+      <div className="flex flex-col items-center gap-1.5 text-center">
+        <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-gray-900 dark:text-white">Create Developer Account</h1>
+        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium">Get started with zero-drift compiler cloud architecture</p>
       </div>
       {success ? (
         <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-center space-y-1">
@@ -244,17 +245,17 @@ function SignUpForm() {
           <div className="text-xs text-gray-600 dark:text-gray-400 font-mono">Check your inbox to verify your API token.</div>
         </div>
       ) : (
-        <div className="grid gap-4 font-mono">
-          <div className="grid gap-2">
+        <div className="grid gap-3.5 font-mono">
+          <div className="grid gap-1.5">
             <Label htmlFor="name" className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Full Name</Label>
             <Input id="name" name="name" type="text" placeholder="Alex Morgan" required autoComplete="name" />
           </div>
-          <div className="grid gap-2">
+          <div className="grid gap-1.5">
             <Label htmlFor="email" className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Work Email</Label>
             <Input id="email" name="email" type="email" placeholder="dev@company.com" required autoComplete="email" />
           </div>
           <PasswordInput name="password" label="Password" required autoComplete="new-password" placeholder="••••••••" />
-          <Button type="submit" variant="default" className="mt-2 text-sm font-black py-3 rounded-xl">
+          <Button type="submit" variant="default" className="mt-2 text-sm font-black w-full">
             {loading ? "Provisioning..." : "Create Free Account"}
           </Button>
         </div>
@@ -265,24 +266,24 @@ function SignUpForm() {
 
 function AuthFormContainer({ isSignIn, onToggle }: { isSignIn: boolean; onToggle: () => void; }) {
   return (
-    <div className="mx-auto grid w-full max-w-[380px] gap-3">
+    <div className="mx-auto grid w-full max-w-[400px] gap-3 bg-white dark:bg-[#0E0C18] border border-gray-200 dark:border-[#26213F] p-6 sm:p-8 rounded-3xl shadow-xl">
       {isSignIn ? <SignInForm /> : <SignUpForm />}
-      <div className="text-center text-xs font-medium text-gray-600 dark:text-gray-400 pt-2">
+      <div className="text-center text-xs font-medium text-gray-600 dark:text-gray-400 pt-1">
         {isSignIn ? "Don't have an account?" : "Already have an account?"}{" "}
-        <Button variant="link" className="pl-1" onClick={onToggle}>
+        <Button variant="link" className="pl-1 p-0 h-auto inline text-xs text-amber-700 dark:text-amber-400" onClick={onToggle}>
           {isSignIn ? "Sign up" : "Sign in"}
         </Button>
       </div>
-      <div className="relative text-center text-xs my-2 after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-gray-200 dark:after:border-gray-800">
-        <span className="relative z-10 bg-white dark:bg-[#0A0A0B] px-3 font-mono text-[10px] text-gray-500 font-bold uppercase">
+      <div className="relative text-center text-xs my-1 after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-gray-200 dark:after:border-[#26213F]">
+        <span className="relative z-10 bg-white dark:bg-[#0E0C18] px-3 font-mono text-[10px] text-gray-500 font-bold uppercase">
           Or continue with
         </span>
       </div>
       <div className="grid grid-cols-1 gap-2">
         <Button
-          variant="outline"
+          variant="github"
           type="button"
-          className="rounded-xl py-3 text-xs font-bold flex items-center justify-center space-x-2 border-gray-300 dark:border-gray-700"
+          className="w-full flex items-center justify-center space-x-2.5 font-bold"
           onClick={() => console.log("UI: GitHub sign-in triggered")}
         >
           <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
