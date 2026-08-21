@@ -196,17 +196,8 @@ export function Navbar() {
               </button>
 
               {/* Sign In Button */}
-              <Link
-                href="/signin"
-                prefetch={true}
-                className="px-3.5 py-2 rounded-xl text-sm font-bold text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all cursor-pointer"
-              >
-                Sign In
-              </Link>
-
-              {/* Get Started CTA */}
-              <Link href="/docs" prefetch={true}>
-                <InteractiveHoverButton text="Get Started" className="px-5 py-2 text-xs font-black" />
+              <Link href="/signin" prefetch={true}>
+                <InteractiveHoverButton text="Sign In" className="px-5 py-2 text-xs font-black" />
               </Link>
             </div>
 
@@ -254,16 +245,8 @@ export function Navbar() {
                   href="/signin"
                   prefetch={true}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 rounded-xl border border-gray-300 text-gray-800 text-xs font-bold"
                 >
-                  Sign In
-                </Link>
-                <Link
-                  href="/docs"
-                  prefetch={true}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <InteractiveHoverButton text="Get started" className="px-4 py-1.5 text-xs font-black" />
+                  <InteractiveHoverButton text="Sign In" className="px-4 py-1.5 text-xs font-black" />
                 </Link>
               </div>
             </div>
