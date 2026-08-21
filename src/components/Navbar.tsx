@@ -190,15 +190,16 @@ export function Navbar() {
 
               {/* Quick Search Keyboard trigger hint */}
               <button
+                type="button"
                 onClick={() => {
-                  const event = new KeyboardEvent('keydown', {'key': 'k', 'metaKey': true});
-                  document.dispatchEvent(event);
+                  window.dispatchEvent(new CustomEvent("open-command-palette"));
                 }}
-                className="hidden md:flex items-center space-x-2 px-2.5 py-1.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-500 hover:border-gray-400 transition-colors cursor-pointer"
+                className="hidden md:flex items-center space-x-2 px-2.5 py-1.5 rounded-xl bg-gray-50 dark:bg-[#151224] border border-gray-200 dark:border-[#282245] text-xs text-gray-500 hover:border-[#FFB020] hover:text-black dark:hover:text-white transition-colors cursor-pointer shadow-xs"
+                aria-label="Open Command Search (⌘K)"
               >
-                <Search className="w-3.5 h-3.5" />
-                <span className="font-mono text-[11px]">Search</span>
-                <kbd className="px-1.5 py-0.5 rounded bg-white border border-gray-200 text-[10px] font-mono">⌘K</kbd>
+                <Search className="w-3.5 h-3.5 text-[#FFB020]" />
+                <span className="font-mono text-[11px] font-bold">Search</span>
+                <kbd className="px-1.5 py-0.5 rounded bg-white dark:bg-black border border-gray-200 dark:border-gray-700 text-[10px] font-mono font-semibold">⌘K</kbd>
               </button>
 
               {/* Sign In Link */}
@@ -216,11 +217,21 @@ export function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Search & Menu Button */}
             <div className="flex sm:hidden items-center space-x-2">
               <button
+                type="button"
+                onClick={() => {
+                  window.dispatchEvent(new CustomEvent("open-command-palette"));
+                }}
+                className="p-2 rounded-xl bg-gray-100 dark:bg-[#151224] border border-gray-300 dark:border-[#282245] text-gray-900 dark:text-white cursor-pointer"
+                aria-label="Open Search"
+              >
+                <Search className="w-4 h-4 text-[#FFB020]" />
+              </button>
+              <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl bg-gray-100 border border-gray-300 text-gray-900 cursor-pointer"
+                className="p-2 rounded-xl bg-gray-100 dark:bg-[#151224] border border-gray-300 dark:border-[#282245] text-gray-900 dark:text-white cursor-pointer"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -231,6 +242,21 @@ export function Navbar() {
         {/* Mobile Drawer */}
         {mobileMenuOpen && (
           <div className="sm:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-4 py-6 space-y-4 animate-in slide-in-from-top duration-200">
+            {/* Mobile Search Bar inside Drawer */}
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                window.dispatchEvent(new CustomEvent("open-command-palette"));
+              }}
+              className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-gray-50 dark:bg-[#151224] border border-gray-200 dark:border-[#282245] text-xs text-gray-500 font-mono"
+            >
+              <div className="flex items-center space-x-2">
+                <Search className="w-4 h-4 text-[#FFB020]" />
+                <span className="font-bold text-gray-800 dark:text-gray-200">Search documentation &amp; pages...</span>
+              </div>
+              <kbd className="px-1.5 py-0.5 rounded bg-white dark:bg-black border border-gray-300 text-[10px]">⌘K</kbd>
+            </button>
             <div className="grid grid-cols-2 gap-2">
               {navLinks.map((link) => (
                 <Link

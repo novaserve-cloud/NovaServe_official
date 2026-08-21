@@ -43,6 +43,7 @@ interface Contributor {
   location: string;
   joined: string;
   githubUrl: string;
+  websiteUrl?: string;
   featured?: boolean;
 }
 
@@ -91,6 +92,7 @@ export function WallOfFame() {
       location: "India",
       joined: "Jan 2025",
       githubUrl: "https://github.com/sazamansari",
+      websiteUrl: "https://md-shadab-azam-ansari.vercel.app/",
       featured: true,
     },
     {
@@ -574,7 +576,7 @@ export function WallOfFame() {
           <div className="bg-white max-w-lg w-full rounded-3xl p-8 space-y-6 shadow-2xl relative border border-gray-200">
             <button
               onClick={() => setActiveModalContributor(null)}
-              className="absolute top-5 right-5 text-gray-400 hover:text-black font-bold p-1 rounded-full text-sm"
+              className="absolute top-5 right-5 text-gray-400 hover:text-black font-bold p-1 rounded-full text-sm cursor-pointer"
             >
               ✕
             </button>
@@ -611,16 +613,26 @@ export function WallOfFame() {
               </div>
             </div>
 
-            <div className="pt-2 flex items-center justify-between">
+            <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+              {activeModalContributor.websiteUrl && (
+                <a
+                  href={activeModalContributor.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-yellow w-full py-3 rounded-xl text-center text-xs font-black flex items-center justify-center space-x-2 cursor-pointer shadow"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span>Visit Creator Portfolio</span>
+                </a>
+              )}
               <a
                 href={activeModalContributor.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-yellow w-full py-3 rounded-xl text-center text-xs font-black flex items-center justify-center space-x-2 cursor-pointer shadow"
+                className="w-full py-3 rounded-xl bg-gray-900 hover:bg-black text-white text-center text-xs font-black flex items-center justify-center space-x-2 cursor-pointer shadow"
               >
-                <Github className="w-4 h-4" />
-                <span>View GitHub Profile</span>
-                <ExternalLink className="w-3.5 h-3.5" />
+                <Github className="w-4 h-4 text-[#FFB020]" />
+                <span>GitHub Profile</span>
               </a>
             </div>
           </div>
