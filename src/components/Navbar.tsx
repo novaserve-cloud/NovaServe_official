@@ -168,7 +168,7 @@ export function Navbar() {
             </div>
 
             {/* Right Side Controls */}
-            <div className="hidden sm:flex items-center space-x-4">
+            <div className="hidden sm:flex items-center space-x-3">
               {/* GitHub Star Pill */}
               <a
                 href="https://github.com/novaserve-cloud/novaserve"
@@ -192,6 +192,15 @@ export function Navbar() {
                 <span className="font-mono text-[11px]">Search</span>
                 <kbd className="px-1.5 py-0.5 rounded bg-white border border-gray-200 text-[10px] font-mono">⌘K</kbd>
               </button>
+
+              {/* Sign In Button */}
+              <Link
+                href="/signin"
+                prefetch={true}
+                className="px-3.5 py-2 rounded-xl text-sm font-bold text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-all cursor-pointer"
+              >
+                Sign In
+              </Link>
 
               {/* Get Started CTA */}
               <Link
@@ -232,24 +241,34 @@ export function Navbar() {
               ))}
             </div>
 
-            <div className="pt-2 border-t border-gray-200 flex items-center justify-between">
+            <div className="pt-2 border-t border-gray-200 flex items-center justify-between gap-2">
               <a
                 href="https://github.com/novaserve-cloud/novaserve"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-sm text-gray-700 font-bold"
+                className="flex items-center space-x-1.5 text-xs text-gray-700 font-bold"
               >
                 <Github className="w-4 h-4" />
-                <span>GitHub Repo</span>
+                <span>GitHub</span>
               </a>
-              <Link
-                href="/docs"
-                prefetch={true}
-                onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2 rounded-xl bg-[#FFB020] text-black text-xs font-bold"
-              >
-                Get started
-              </Link>
+              <div className="flex items-center space-x-2">
+                <Link
+                  href="/signin"
+                  prefetch={true}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2 rounded-xl border border-gray-300 text-gray-800 text-xs font-bold"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/docs"
+                  prefetch={true}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-2 rounded-xl bg-[#FFB020] text-black text-xs font-bold"
+                >
+                  Get started
+                </Link>
+              </div>
             </div>
           </div>
         )}

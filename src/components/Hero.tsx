@@ -102,11 +102,11 @@ export function Hero() {
 
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                   <Link
-                    href="/docs"
+                    href="/signin"
                     prefetch={true}
-                    className="px-5 py-3.5 rounded-xl bg-white hover:bg-gray-50 border border-gray-300 text-gray-800 font-semibold text-base transition-all cursor-pointer shadow-xs hover:border-gray-400"
+                    className="px-5 py-3.5 rounded-xl bg-white hover:bg-gray-50 border border-gray-300 text-gray-800 font-semibold text-base transition-all cursor-pointer shadow-xs hover:border-gray-400 flex items-center space-x-1.5"
                   >
-                    Documentation
+                    <span>Sign In</span>
                   </Link>
                 </motion.div>
               </div>
