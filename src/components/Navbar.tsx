@@ -94,18 +94,12 @@ export function Navbar() {
             {/* Logo & Main Nav */}
             <div className="flex items-center space-x-8">
               <Link href="/" prefetch={true} className="flex items-center space-x-3 group cursor-pointer">
-                <div className="w-8 h-8 rounded-xl bg-[#FFB020] p-0.5 shadow-md group-hover:shadow-[#FFB020]/40 transition-all duration-300 flex items-center justify-center text-black">
+                <div className="w-8 h-8 rounded-xl bg-[#FFB020] p-0.5 shadow-md group-hover:scale-105 transition-all duration-300 flex items-center justify-center text-black">
                   <DiamondIcon size={20} />
                 </div>
-                <ImageText
-                  text="NovaServe"
-                  imageUrl={[
-                    "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&auto=format&fit=crop&q=80",
-                    "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&auto=format&fit=crop&q=80",
-                  ]}
-                  direction="diagonal"
-                  className="text-xl font-black tracking-tight"
-                />
+                <span className="text-xl font-black text-black tracking-tight">
+                  NovaServe
+                </span>
               </Link>
 
               {/* Desktop Navigation Links */}
