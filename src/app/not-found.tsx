@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import { Terminal, ArrowLeft } from "lucide-react";
 

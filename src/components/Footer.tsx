@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Github, Twitter, Disc as Discord, Sparkles, Activity, ArrowRight, ShieldCheck } from "lucide-react";
 import { DiamondIcon } from "./Icons";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { ImageText } from "@/components/ui/image-text";
 
 export function Footer() {
   return (
@@ -19,9 +20,15 @@ export function Footer() {
               <div className="w-9 h-9 rounded-xl bg-[#FFB020] p-1 shadow-md group-hover:scale-105 transition-transform flex items-center justify-center text-black">
                 <DiamondIcon size={20} />
               </div>
-              <span className="text-2xl font-black text-gray-900 dark:text-white tracking-tight">
-                NovaServe
-              </span>
+              <ImageText
+                text="NovaServe"
+                imageUrl={[
+                  "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&auto=format&fit=crop&q=80",
+                  "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=800&auto=format&fit=crop&q=80",
+                ]}
+                direction="diagonal"
+                className="text-2xl font-black tracking-tight"
+              />
             </Link>
 
             <p className="text-sm text-gray-600 dark:text-gray-400 font-semibold leading-relaxed max-w-sm font-sans">
