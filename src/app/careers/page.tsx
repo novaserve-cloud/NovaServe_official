@@ -1,3 +1,5 @@
+"use client";
+
 import { Users, ArrowRight, Briefcase } from "lucide-react";
 import Link from "next/link";
 

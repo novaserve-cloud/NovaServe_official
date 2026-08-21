@@ -1,3 +1,5 @@
+"use client";
+
 import { FileText, GitCommit, CheckCircle2, Zap } from "lucide-react";
 
 export default function ChangelogPage() {
