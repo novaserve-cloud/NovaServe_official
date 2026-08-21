@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Github, Twitter, Disc as Discord, Sparkles, Activity, ArrowRight, ShieldCheck } from "lucide-react";
 import { DiamondIcon } from "./Icons";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
-import { ImageText } from "@/components/ui/image-text";
+import { RevealText } from "@/components/ui/reveal-text";
 
 export function Footer() {
   return (
@@ -20,9 +20,14 @@ export function Footer() {
               <div className="w-9 h-9 rounded-xl bg-[#FFB020] p-1 shadow-md group-hover:scale-105 transition-transform flex items-center justify-center text-black">
                 <DiamondIcon size={20} />
               </div>
-              <span className="text-2xl font-black text-black dark:text-white tracking-tight">
-                NovaServe
-              </span>
+              <RevealText
+                text="NovaServe"
+                textColor="text-black dark:text-white"
+                overlayColor="text-[#FFB020]"
+                fontSize="text-2xl"
+                letterDelay={0.04}
+                overlayDelay={0.03}
+              />
             </Link>
 
             <p className="text-sm text-gray-600 dark:text-gray-400 font-semibold leading-relaxed max-w-sm font-sans">

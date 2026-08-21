@@ -20,6 +20,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "@/components/Icons";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { RevealText } from "@/components/ui/reveal-text";
 import { ImageText } from "@/components/ui/image-text";
 
 export function Navbar() {
@@ -97,9 +98,14 @@ export function Navbar() {
                 <div className="w-8 h-8 rounded-xl bg-[#FFB020] p-0.5 shadow-md group-hover:scale-105 transition-all duration-300 flex items-center justify-center text-black">
                   <DiamondIcon size={20} />
                 </div>
-                <span className="text-xl font-black text-black tracking-tight">
-                  NovaServe
-                </span>
+                <RevealText
+                  text="NovaServe"
+                  textColor="text-black"
+                  overlayColor="text-[#FFB020]"
+                  fontSize="text-xl"
+                  letterDelay={0.04}
+                  overlayDelay={0.03}
+                />
               </Link>
 
               {/* Desktop Navigation Links */}
