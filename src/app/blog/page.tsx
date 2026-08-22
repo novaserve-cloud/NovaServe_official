@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { BookOpen, Calendar, Clock, User, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
 import { NovaFeedSection } from "@/components/NovaFeedSection";
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata = constructMetadata({
+  title: "Engineering Blog & Technical Insights",
+  description:
+    "Deep technical essays on cloud compilers, AST analysis, zero-drift infrastructure, and serverless engineering by the NovaServe team.",
+  path: "/blog",
+});
 
 export default function BlogPage() {
   const posts = [

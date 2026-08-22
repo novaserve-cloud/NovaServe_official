@@ -1,20 +1,41 @@
 import type { Metadata } from "next";
 import { DocSidebar, MobileDocNav } from "@/components/docs/DocSidebar";
 import { DocSearchModal } from "@/components/docs/SearchModal";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s — NovaServe Docs",
-    default: "NovaServe Documentation — Serverless Application Framework",
+    template: `%s | ${siteConfig.name} Docs`,
+    default: `Documentation | ${siteConfig.name}`,
   },
   description:
-    "Complete documentation for NovaServe — the TypeScript-native serverless framework. CLI reference, guides, architecture, and API documentation.",
+    "Complete documentation for NovaServe — the TypeScript-native cloud and serverless framework. CLI reference, guides, architecture, and API documentation.",
   openGraph: {
-    title: "NovaServe Documentation",
+    title: `Documentation | ${siteConfig.name}`,
     description:
-      "Build, deploy, and scale serverless applications with NovaServe. Complete CLI reference, guides, and API documentation.",
+      "Build, deploy, and scale cloud applications with NovaServe. Complete CLI reference, guides, and API documentation.",
     type: "website",
-    url: "https://www.novaserve.cloud/docs",
+    url: `${siteConfig.url}/docs`,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} Documentation`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Documentation | ${siteConfig.name}`,
+    description:
+      "Build, deploy, and scale cloud applications with NovaServe. Complete CLI reference, guides, and API documentation.",
+    images: [siteConfig.ogImage],
+    creator: siteConfig.creator.twitter,
+  },
+  alternates: {
+    canonical: `${siteConfig.url}/docs`,
   },
 };
 

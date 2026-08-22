@@ -1,8 +1,14 @@
-"use client";
-
 import Link from "next/link";
 import { Cpu, Layers, ShieldCheck, Zap, ArrowRight } from "lucide-react";
 import { DiamondIcon } from "@/components/Icons";
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata = constructMetadata({
+  title: "Architecture & Compiler Engine",
+  description:
+    "Explore NovaServe's 4-stage compiler architecture: AST parsing, Nova IR synthesis, provider emission, and SHA-256 state locking.",
+  path: "/architecture",
+});
 
 export default function ArchitecturePage() {
   return (

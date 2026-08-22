@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | NovaServe",
-  description: "Privacy Policy for NovaServe.",
-};
+export const metadata = constructMetadata({
+  title: "Privacy Policy",
+  description: "Privacy policy and open-source data telemetry disclosures for NovaServe.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

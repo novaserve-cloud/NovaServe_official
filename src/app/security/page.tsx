@@ -1,4 +1,12 @@
 import { ShieldCheck, Lock, CheckCircle2, FileText } from "lucide-react";
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata = constructMetadata({
+  title: "Security, Compliance & IAM Synthesis",
+  description:
+    "Learn about NovaServe's security model: automated least-privilege IAM inference, SHA-256 state locking, and zero-trust encryption.",
+  path: "/security",
+});
 
 export default function SecurityPage() {
   const policies = [

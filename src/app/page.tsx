@@ -1,3 +1,4 @@
+import { constructMetadata } from "@/lib/seo";
 import { Hero } from "@/components/Hero";
 import { TrustedBy } from "@/components/TrustedBy";
 import { WhatIsNovaServe } from "@/components/WhatIsNovaServe";
@@ -12,6 +13,13 @@ import { BenchmarksSection } from "@/components/BenchmarksSection";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { CommunitySection } from "@/components/CommunitySection";
 import { CTASection } from "@/components/CTASection";
+
+export const metadata = constructMetadata({
+  title: "NovaServe – Modern Cloud Infrastructure Platform",
+  description:
+    "NovaServe is a modern cloud infrastructure platform for deploying, managing, and scaling applications across cloud providers with a developer-first experience.",
+  path: "/",
+});
 
 export default function Home() {
   return (

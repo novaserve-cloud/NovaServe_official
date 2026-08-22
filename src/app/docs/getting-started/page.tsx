@@ -1,17 +1,18 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { getDocPage, getPrevPage, getNextPage } from "@/lib/docs";
 import { DocPageLayout, DocToc } from "@/components/docs/DocPage";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { Callout } from "@/components/docs/Callout";
+import { constructMetadata } from "@/lib/seo";
 
 const slug = "getting-started";
 const page = getDocPage(slug)!;
 
-export const metadata: Metadata = {
+export const metadata = constructMetadata({
   title: page.title,
   description: page.description,
-};
+  path: `/docs/${slug}`,
+});
 
 export default function GettingStartedPage() {
   return (

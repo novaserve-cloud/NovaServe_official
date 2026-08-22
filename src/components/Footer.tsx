@@ -120,12 +120,24 @@ export function Footer() {
 
         {/* Bottom copyright & operational status */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-600 dark:text-gray-400 font-semibold font-sans">
-          <div className="flex flex-wrap items-center space-x-3">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span>© {new Date().getFullYear()} NovaServe Open Source. Apache 2.0 License.</span>
             <span>•</span>
             <Link href="/privacy" prefetch={true} className="hover:text-amber-700 dark:hover:text-amber-400 cursor-pointer">Privacy Policy</Link>
             <span>•</span>
             <Link href="/terms" prefetch={true} className="hover:text-amber-700 dark:hover:text-amber-400 cursor-pointer">Terms of Service</Link>
+            <span>•</span>
+            <span>
+              Built by{" "}
+              <a
+                href="https://md-shadab-azam-ansari.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-900 dark:text-gray-200 hover:text-amber-600 dark:hover:text-[#FFB020] transition-colors underline underline-offset-4 decoration-gray-300 dark:decoration-gray-700 hover:decoration-[#FFB020]"
+              >
+                Md Shadab Azam Ansari
+              </a>
+            </span>
           </div>
 
           <div className="flex items-center space-x-3">

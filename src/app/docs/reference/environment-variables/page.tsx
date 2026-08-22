@@ -1,10 +1,14 @@
-import type { Metadata } from "next";
 import { getDocPage, getPrevPage, getNextPage } from "@/lib/docs";
 import { DocPageLayout, DocToc } from "@/components/docs/DocPage";
+import { constructMetadata } from "@/lib/seo";
 
 const slug = "reference/environment-variables";
 const page = getDocPage(slug)!;
-export const metadata: Metadata = { title: page.title, description: page.description };
+export const metadata = constructMetadata({
+  title: page.title,
+  description: page.description,
+  path: `/docs/${slug}`,
+});
 
 export default function EnvVarsPage() {
   return (

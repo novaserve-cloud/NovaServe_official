@@ -1,6 +1,12 @@
-"use client";
-
 import { CommunitySection } from "@/components/CommunitySection";
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata = constructMetadata({
+  title: "Developer Community & Ecosystem",
+  description:
+    "Join the global NovaServe open source developer community. Connect on Discord, contribute on GitHub, and discuss cloud architecture.",
+  path: "/community",
+});
 
 export default function CommunityPage() {
   return (

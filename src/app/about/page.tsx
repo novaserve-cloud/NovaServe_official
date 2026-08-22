@@ -1,4 +1,12 @@
 import { Zap, Heart, Terminal, Cpu, ShieldCheck } from "lucide-react";
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata = constructMetadata({
+  title: "About",
+  description:
+    "Learn about NovaServe's mission to transform cloud infrastructure through compiler-driven deterministic synthesis.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

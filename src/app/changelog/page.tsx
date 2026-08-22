@@ -1,6 +1,12 @@
-"use client";
-
 import { FileText, GitCommit, CheckCircle2, Zap } from "lucide-react";
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata = constructMetadata({
+  title: "Changelog & Release Notes",
+  description:
+    "Explore the latest releases, features, bug fixes, and compiler updates in NovaServe.",
+  path: "/changelog",
+});
 
 export default function ChangelogPage() {
   const releases = [

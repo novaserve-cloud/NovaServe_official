@@ -1,7 +1,13 @@
-"use client";
-
 import Link from "next/link";
-import { Check, Zap, ShieldCheck } from "lucide-react";
+import { Check, Zap } from "lucide-react";
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata = constructMetadata({
+  title: "Pricing",
+  description:
+    "Explore transparent pricing for NovaServe. Free and open source for individual developers, with managed team features.",
+  path: "/pricing",
+});
 
 export default function PricingPage() {
   return (

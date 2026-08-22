@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { CommandPalette } from "@/components/CommandPalette";
+import { siteConfig } from "@/config/site";
+import { getRootStructuredData } from "@/lib/structured-data";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,40 +20,62 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "NovaServe — The TypeScript-Native Serverless Framework",
-    template: "%s | NovaServe",
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "Build, develop, plan, and deploy serverless applications with TypeScript—powered by a compiler-driven infrastructure engine.",
-  keywords: [
-    "NovaServe",
-    "TypeScript Serverless Framework",
-    "serverless framework",
-    "TypeScript serverless",
-    "open source serverless framework",
-    "cloud application framework",
-    "Nova IR",
-    "compiler-driven infrastructure",
-    "least-privilege IAM synthesis",
-    "AWS serverless framework",
-    "local serverless emulator"
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [
+    {
+      name: siteConfig.creator.name,
+      url: siteConfig.creator.url,
+    },
+    {
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
   ],
-  authors: [{ name: "NovaServe Team" }],
-  creator: "NovaServe Open Source",
-  metadataBase: new URL("https://www.novaserve.cloud"),
+  creator: siteConfig.creator.name,
+  publisher: siteConfig.name,
+  alternates: {
+    canonical: siteConfig.url,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.novaserve.cloud",
-    title: "NovaServe — The TypeScript-Native Serverless Framework",
-    description:
-      "Build Serverless. Compile to the Cloud. Pure TypeScript serverless framework with static AST compiler analysis and Nova IR.",
-    siteName: "NovaServe Platform",
+    url: siteConfig.url,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${siteConfig.name} – Cloud Infrastructure for Developers`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: siteConfig.creator.twitter,
+    site: "@novaserve",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   verification: {
     google: "hOW2DezM8_w4B2Cn-KenK0VC6QQkqYAMPz8Q-pm2yn4",
@@ -68,42 +92,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "SoftwareApplication",
-        "name": "NovaServe",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Linux, macOS, Windows",
-        "softwareVersion": "2.1.10",
-        "license": "https://www.apache.org/licenses/LICENSE-2.0",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Md Shadab Azam Ansari",
-          "url": "https://md-shadab-azam-ansari.vercel.app/"
-        },
-        "downloadUrl": "https://www.npmjs.com/package/novaserve",
-        "codeRepository": "https://github.com/novaserve-cloud/novaserve",
-        "description": "NovaServe — Build Fast. Deploy Anywhere. Scale Automatically. The modern open-source framework for building, deploying, and scaling cloud applications."
-      },
-      {
-        "@type": "Organization",
-        "name": "NovaServe Cloud",
-        "url": "https://novaserve.dev",
-        "sameAs": [
-          "https://github.com/novaserve-cloud/novaserve",
-          "https://www.npmjs.com/package/novaserve",
-          "https://md-shadab-azam-ansari.vercel.app/"
-        ]
-      }
-    ]
-  };
+  const jsonLd = getRootStructuredData();
 
   return (
     <html lang="en" className={`light ${inter.variable} ${jetbrainsMono.variable}`}>

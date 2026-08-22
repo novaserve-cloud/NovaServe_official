@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { DiamondIcon } from "@/components/Icons";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Visual Sitemap | NovaServe",
-  description: "A comprehensive overview of all pages and documentation available on the NovaServe platform.",
-};
+export const metadata = constructMetadata({
+  title: "Visual Sitemap",
+  description:
+    "A comprehensive overview of all pages and documentation available on the NovaServe platform.",
+  path: "/visual-sitemap",
+});
 
 const sitemapSections = [
   {

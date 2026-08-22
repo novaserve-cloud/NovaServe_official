@@ -1,7 +1,13 @@
-"use client";
-
 import { Users, ArrowRight, Briefcase } from "lucide-react";
 import Link from "next/link";
+import { constructMetadata } from "@/lib/seo";
+
+export const metadata = constructMetadata({
+  title: "Careers & Open Roles",
+  description:
+    "Join the team building NovaServe. Explore open positions in compiler engineering, distributed systems, and developer tools.",
+  path: "/careers",
+});
 
 export default function CareersPage() {
   const roles = [

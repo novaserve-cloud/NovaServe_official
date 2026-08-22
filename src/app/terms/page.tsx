@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms of Service | NovaServe",
-  description: "Terms of Service for NovaServe.",
-};
+export const metadata = constructMetadata({
+  title: "Terms of Service",
+  description: "Terms of service and software licensing agreements for NovaServe.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

@@ -1,19 +1,12 @@
-import { Metadata } from "next";
 import { WallOfFame } from "@/components/WallOfFame";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contribute & Open Source Wall of Fame | NovaServe Cloud",
+export const metadata = constructMetadata({
+  title: "Contribute to Open Source",
   description:
-    "Join our open source community. Browse good first issues, submit pull requests, and get featured on the NovaServe Wall of Fame.",
-  openGraph: {
-    title: "Contribute & Open Source Wall of Fame | NovaServe Cloud",
-    description:
-      "Join our open source community. Browse good first issues, submit pull requests, and get featured on the NovaServe Wall of Fame.",
-    url: "https://novaserve.cloud/contribute",
-    siteName: "NovaServe Cloud",
-    type: "website",
-  },
-};
+    "Join our open source community. Browse good first issues, submit pull requests, and contribute to the NovaServe multi-cloud compiler ecosystem.",
+  path: "/contribute",
+});
 
 export default function ContributePage() {
   return <WallOfFame />;

@@ -1,12 +1,16 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { getDocPage, getPrevPage, getNextPage } from "@/lib/docs";
 import { DocPageLayout, DocToc } from "@/components/docs/DocPage";
 import { CodeBlock } from "@/components/docs/CodeBlock";
+import { constructMetadata } from "@/lib/seo";
 
 const slug = "cli";
 const page = getDocPage(slug)!;
-export const metadata: Metadata = { title: page.title, description: page.description };
+export const metadata = constructMetadata({
+  title: page.title,
+  description: page.description,
+  path: `/docs/${slug}`,
+});
 
 export default function CLIOverviewPage() {
   const commands = [

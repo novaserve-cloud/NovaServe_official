@@ -1,13 +1,17 @@
-import type { Metadata } from "next";
 import { getDocPage, getPrevPage, getNextPage } from "@/lib/docs";
 import { DocPageLayout, DocToc } from "@/components/docs/DocPage";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 import { Callout } from "@/components/docs/Callout";
+import { constructMetadata } from "@/lib/seo";
 
 const slug = "quickstart";
 const page = getDocPage(slug)!;
 
-export const metadata: Metadata = { title: page.title, description: page.description };
+export const metadata = constructMetadata({
+  title: page.title,
+  description: page.description,
+  path: `/docs/${slug}`,
+});
 
 export default function QuickStartPage() {
   return (

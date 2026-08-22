@@ -1,5 +1,4 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 import {
   BookOpen,
   Terminal,
@@ -12,12 +11,14 @@ import {
   Package,
   Github,
 } from "lucide-react";
+import { constructMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "NovaServe Documentation — Serverless Application Framework",
+export const metadata = constructMetadata({
+  title: "Documentation — Serverless Application Framework",
   description:
     "Complete documentation for NovaServe — the TypeScript-native serverless framework. Get started, CLI reference, guides, architecture, and API documentation.",
-};
+  path: "/docs",
+});
 
 /* ------------------------------------------------------------------ */
 /*  Quick Link Card                                                    */
